@@ -103,75 +103,6 @@
     });
   });
 
-  var video = document.querySelector(".hero-loop");
-  var pauseBtn = document.querySelector(".hero-pause");
-  if (video && pauseBtn) {
-    var userPaused = false;
-    var inView = true;
-    function syncPause() {
-      var paused = video.paused;
-      pauseBtn.setAttribute("aria-pressed", String(paused));
-      pauseBtn.setAttribute("aria-label", paused ? "Play background video" : "Pause background video");
-    }
-    pauseBtn.addEventListener("click", function () {
-      if (video.paused) {
-        userPaused = false;
-        video.play();
-      } else {
-        userPaused = true;
-        video.pause();
-      }
-      syncPause();
-    });
-    if (!reduce) {
-      video.play().catch(function () {});
-      var heroWatch = new IntersectionObserver(function (entries) {
-        inView = entries[0].isIntersecting;
-        if (!inView) video.pause();
-        else if (!userPaused) video.play().catch(function () {});
-        syncPause();
-      }, { threshold: 0.25 });
-      heroWatch.observe(video);
-      document.addEventListener("visibilitychange", function () {
-        if (document.hidden) video.pause();
-        else if (!userPaused && inView) video.play().catch(function () {});
-        syncPause();
-      });
-    }
-    video.addEventListener("play", syncPause);
-    video.addEventListener("pause", syncPause);
-  }
-
-  var screen = document.querySelector(".hero-screen");
-  if (screen && fine && !reduce) {
-    screen.addEventListener("pointermove", function (event) {
-      var rect = screen.getBoundingClientRect();
-      var x = (event.clientX - rect.left) / rect.width - 0.5;
-      var y = (event.clientY - rect.top) / rect.height - 0.5;
-      screen.querySelectorAll(".shift").forEach(function (el) {
-        var depth = Number(el.getAttribute("data-depth")) || 0;
-        el.style.transform = "translate(" + (x * depth) + "px, " + (y * depth) + "px)";
-      });
-    });
-    screen.addEventListener("pointerleave", function () {
-      screen.querySelectorAll(".shift").forEach(function (el) {
-        el.style.transform = "";
-      });
-    });
-  }
-
-  var seam = document.querySelector(".seam-wrap");
-  var stage = document.querySelector(".split-stage");
-  if (seam && stage) {
-    if (reduce) {
-      seam.classList.add("is-in");
-    } else {
-      new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) seam.classList.add("is-in");
-      }, { threshold: 0.35 }).observe(stage);
-    }
-  }
-
   var track = document.querySelector(".work-track");
   var count = document.querySelector(".work-count");
   if (track && count) {
@@ -274,124 +205,237 @@
   });
 })();
 
-/* Signature layer (style guide §8): Lenis smooth scroll, the one hero
-   entrance, words drifting apart as the robot dissolves, the nav's active
-   ring and the process line. Nothing else moves. Reduced motion skips it all. */
+/* Experience layer: loader, liquid glass, dock, pinned work gallery,
+   headline reveals and Lenis smooth scroll. The particle world itself is
+   js/stage.js. Reduced motion skips the motion and shows everything. */
 (function () {
   var root = document.documentElement;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   var vh = window.innerHeight;
-  var vw = window.innerWidth;
-  window.addEventListener("resize", function () { vh = window.innerHeight; vw = window.innerWidth; }, { passive: true });
+  window.addEventListener("resize", function () { vh = window.innerHeight; }, { passive: true });
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
-  /* Hero words: phones fit long words (CONSTRUYE) to the column */
-  var screen = document.querySelector(".hero-screen");
-  var kws = Array.prototype.slice.call(document.querySelectorAll(".hero-screen .kw"));
-  function fitWords() {
-    kws.forEach(function (kw) {
-      kw.style.fontSize = "";
-      if (window.innerWidth >= 768) return;
-      var inner = kw.querySelector(".shift") || kw;
-      var avail = kw.clientWidth;
-      var need = inner.scrollWidth;
-      if (need > avail && avail > 0) {
-        var size = parseFloat(getComputedStyle(kw).fontSize);
-        kw.style.fontSize = Math.floor(size * (avail / need) * 0.98) + "px";
+  /* ---------- Loader: counts as the stage actually loads ---------- */
+
+  var loader = document.querySelector(".loader");
+  var countEl = loader && loader.querySelector(".loader-count");
+  var shown = 0, target = 0.08, stageDone = false, fontsDone = false, finished = false;
+  window.addEventListener("stage:progress", function (e) { target = Math.max(target, e.detail * 0.92); });
+  window.addEventListener("stage:ready", function () { stageDone = true; });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fontsDone = true; target = Math.max(target, 0.2); });
+  else fontsDone = true;
+  setTimeout(function () { stageDone = true; fontsDone = true; }, 6000);
+
+  function finish() {
+    if (finished) return;
+    finished = true;
+    root.classList.add("is-loaded");
+    setTimeout(function () { if (loader) loader.remove(); }, 1600);
+  }
+  if (reduce || !loader) finish();
+  else {
+    (function count() {
+      if (stageDone && fontsDone) target = 1;
+      shown += (target - shown) * 0.08 + (target === 1 ? 0.004 : 0);
+      if (shown > target) shown = target;
+      var n = Math.round(shown * 100);
+      if (countEl) countEl.textContent = n;
+      loader.style.setProperty("--lp", shown.toFixed(3));
+      if (n >= 100) setTimeout(finish, 250);
+      else requestAnimationFrame(count);
+    })();
+  }
+
+  /* ---------- Liquid glass ---------- */
+
+  // Chromium can refract through backdrop-filter: url(). Build a lens map:
+  // neutral in the middle, bending light inward near the edges.
+  var chromium = !!(navigator.userAgentData && navigator.userAgentData.brands &&
+    navigator.userAgentData.brands.some(function (b) { return /Chromium|Google Chrome|Microsoft Edge/.test(b.brand); }));
+  var mapEl = document.querySelector(".lg-map");
+  if (chromium && mapEl && !reduce) {
+    var S = 128, c = document.createElement("canvas");
+    c.width = c.height = S;
+    var g = c.getContext("2d"), img = g.createImageData(S, S);
+    for (var y = 0; y < S; y++) for (var x = 0; x < S; x++) {
+      var dx = (x / (S - 1)) * 2 - 1, dy = (y / (S - 1)) * 2 - 1;
+      var edge = Math.pow(Math.max(Math.abs(dx), Math.abs(dy)), 6);
+      var i = (y * S + x) * 4;
+      img.data[i] = 128 - dx * edge * 120;
+      img.data[i + 1] = 128 - dy * edge * 120;
+      img.data[i + 2] = 128;
+      img.data[i + 3] = 255;
+    }
+    g.putImageData(img, 0, 0);
+    mapEl.setAttribute("href", c.toDataURL());
+    root.classList.add("lg");
+  }
+
+  // a specular highlight that follows the pointer across each glass surface
+  if (fine && !reduce) {
+    var hot = null, px = 0, py = 0, queued = false;
+    document.addEventListener("pointermove", function (e) {
+      hot = e.target.closest && e.target.closest(".glass");
+      px = e.clientX; py = e.clientY;
+      if (hot && !queued) {
+        queued = true;
+        requestAnimationFrame(function () {
+          queued = false;
+          if (!hot) return;
+          var r = hot.getBoundingClientRect();
+          hot.style.setProperty("--gx", ((px - r.left) / r.width * 100).toFixed(1) + "%");
+          hot.style.setProperty("--gy", ((py - r.top) / r.height * 100).toFixed(1) + "%");
+        });
+      }
+    }, { passive: true });
+  }
+
+  /* ---------- Dock: a glass pill slides to the section in view ---------- */
+
+  var dockLinks = Array.prototype.slice.call(document.querySelectorAll(".dock-links a"));
+  var dockTargets = dockLinks.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  var ind = null, activeIdx = -1;
+  var dl = document.querySelector(".dock-links");
+  if (dl) { ind = document.createElement("span"); ind.className = "dock-ind"; ind.setAttribute("aria-hidden", "true"); dl.insertBefore(ind, dl.firstChild); }
+  function setActive(idx) {
+    if (idx === activeIdx || !ind) return;
+    activeIdx = idx;
+    dockLinks.forEach(function (a, i) { a.classList.toggle("is-active", i === idx); if (i === idx) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+    if (idx < 0) { ind.classList.remove("is-on"); return; }
+    var a = dockLinks[idx];
+    ind.style.width = a.offsetWidth + "px";
+    ind.style.transform = "translateX(" + a.offsetLeft + "px)";
+    ind.classList.add("is-on");
+  }
+
+  /* ---------- Headlines sharpen out of blur, word by word ---------- */
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".reveal-words"));
+  if (!reduce) heads.forEach(function (h) {
+    h.setAttribute("aria-label", h.textContent.replace(/\s+/g, " ").trim());
+    var words = [];
+    function wrapText(node, parent) {
+      node.textContent.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { parent.appendChild(document.createTextNode(" ")); return; }
+        var w = document.createElement("span");
+        w.className = "w"; w.setAttribute("aria-hidden", "true"); w.textContent = part;
+        parent.appendChild(w); words.push(w);
+      });
+    }
+    Array.prototype.slice.call(h.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) { var frag = document.createDocumentFragment(); wrapText(n, frag); h.replaceChild(frag, n); }
+      else if (n.nodeType === 1) {
+        var inner = Array.prototype.slice.call(n.childNodes);
+        n.textContent = "";
+        inner.forEach(function (c2) { if (c2.nodeType === 3) wrapText(c2, n); else n.appendChild(c2); });
       }
     });
-  }
-  fitWords();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWords);
-  window.addEventListener("resize", fitWords, { passive: true });
+    h._words = words;
+  });
 
-  /* The one orchestrated entrance, after fonts so nothing shifts mid-move */
-  function loaded() { root.classList.add("is-loaded"); }
-  if (reduce) loaded();
-  else {
-    var done = false;
-    var go = function () { if (done) return; done = true; requestAnimationFrame(function () { requestAnimationFrame(loaded); }); };
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go);
-    setTimeout(go, 700);
-  }
+  /* ---------- Soft entrances for cards and panels ---------- */
 
-  /* Nav: a 1px amber ring slides to the section in view */
-  var pill = document.querySelector(".nav-pill");
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-pill a"));
-  var navTargets = navLinks.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
-  var ring = null, activeIdx = -1;
-  if (pill) {
-    ring = document.createElement("span");
-    ring.className = "pill-ring";
-    ring.setAttribute("aria-hidden", "true");
-    pill.insertBefore(ring, pill.firstChild);
-  }
-  function setActive(idx) {
-    if (idx === activeIdx || !ring) return;
-    activeIdx = idx;
-    navLinks.forEach(function (a, i) { a.classList.toggle("is-active", i === idx); });
-    if (idx < 0) { ring.classList.remove("is-on"); return; }
-    var a = navLinks[idx];
-    ring.style.width = a.offsetWidth + "px";
-    ring.style.transform = "translateX(" + a.offsetLeft + "px)";
-    ring.classList.add("is-on");
-  }
+  var rvEls = Array.prototype.slice.call(document.querySelectorAll(".track, .step, .pillars li, .spot-frame, .reel-frame, .contact-panel, .about blockquote, .section-head .lede"));
+  var counters = new Map();
+  rvEls.forEach(function (el) {
+    var k = counters.get(el.parentNode) || 0;
+    counters.set(el.parentNode, k + 1);
+    el.style.setProperty("--i", Math.min(k, 5));
+    el.classList.add("rv");
+  });
+  if (!reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+    rvEls.forEach(function (el) { io.observe(el); });
+  } else rvEls.forEach(function (el) { el.classList.add("is-in"); });
 
-  /* Process: an amber line fills as the steps come into view */
+  /* ---------- Process line ---------- */
+
   var steps = document.querySelector(".steps");
-  var bar = null;
-  if (steps) {
-    bar = document.createElement("span");
-    bar.className = "steps-progress";
-    bar.setAttribute("aria-hidden", "true");
-    steps.appendChild(bar);
-  }
+  var stepsLine = null;
+  if (steps) { stepsLine = document.createElement("span"); stepsLine.className = "steps-line"; stepsLine.setAttribute("aria-hidden", "true"); stepsLine.appendChild(document.createElement("i")); steps.appendChild(stepsLine); }
 
-  /* Lenis smooth scroll and eased anchor jumps */
+  /* ---------- Work: pinned horizontal gallery on wide screens ---------- */
+
+  var work = document.querySelector(".work");
+  var track = work && work.querySelector(".work-track");
+  var count = work && work.querySelector(".work-count");
+  var cards = track ? Array.prototype.slice.call(track.querySelectorAll(".card")) : [];
+  var pinDist = 0;
+  function layoutWork() {
+    if (!work || !track) return;
+    var wide = window.innerWidth >= 900 && !reduce;
+    work.classList.toggle("is-pinned", wide);
+    if (!wide) { work.style.height = ""; track.style.removeProperty("--wx"); return; }
+    pinDist = Math.max(0, track.scrollWidth - window.innerWidth);
+    work.style.height = (window.innerHeight + pinDist) + "px";
+  }
+  layoutWork();
+  window.addEventListener("resize", layoutWork, { passive: true });
+  window.addEventListener("load", layoutWork);
+
+  /* ---------- Lenis ---------- */
+
   var lenis = null;
   if (!reduce && window.Lenis) {
-    lenis = new window.Lenis({ lerp: 0.09, smoothWheel: true });
+    lenis = new window.Lenis({ lerp: 0.085, smoothWheel: true });
     window.__lenis = lenis;
     document.addEventListener("click", function (e) {
       var a = e.target.closest && e.target.closest('a[href*="#"]');
       if (!a || e.defaultPrevented) return;
       var url = new URL(a.href, location.href);
       if (url.pathname !== location.pathname || url.search !== location.search || !url.hash || url.hash === "#") return;
-      var target = document.querySelector(url.hash);
-      if (!target) return;
+      var t = document.querySelector(url.hash);
+      if (!t) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -84, duration: 1.4, easing: function (x) { return x === 1 ? 1 : 1 - Math.pow(2, -10 * x); } });
+      lenis.scrollTo(url.hash === "#top" ? 0 : t, { offset: -24, duration: 1.6, easing: function (x) { return x === 1 ? 1 : 1 - Math.pow(2, -10 * x); } });
       if (history.pushState) history.pushState(null, "", url.hash);
     });
   }
+
+  /* ---------- One frame loop ---------- */
 
   var frame = 0;
   function tick(t) {
     if (lenis) lenis.raf(t);
     var y = window.scrollY;
     frame++;
+    root.classList.toggle("is-scrolled-past", y > 60);
 
-    // hero words drift apart (up to 6vw) as the robot dissolves; transform only
-    if (screen && !reduce && vw >= 768) {
-      var p = clamp(y / (screen.offsetHeight || vh), 0, 1);
-      if (p < 1) {
-        kws.forEach(function (k, i) {
-          var dir = i === 1 ? 1 : -1;
-          k.style.transform = "translate3d(" + (dir * p * vw * 0.06).toFixed(1) + "px,0,0)";
-        });
+    if (work && work.classList.contains("is-pinned")) {
+      var top = work.getBoundingClientRect().top;
+      var p = clamp(-top / Math.max(1, pinDist), 0, 1);
+      track.style.setProperty("--wx", (-p * pinDist).toFixed(1) + "px");
+      if (count && frame % 4 === 0) count.textContent = (Math.min(cards.length, Math.round(p * (cards.length - 1)) + 1)) + " / " + cards.length;
+    }
+
+    for (var h = 0; h < heads.length; h++) {
+      var el = heads[h], ws = el._words;
+      if (!ws) continue;
+      var r = el.getBoundingClientRect();
+      if (r.bottom < -50 || r.top > vh + 50) continue;
+      var prog = clamp((vh * 0.92 - r.top) / (vh * 0.55), 0, 1);
+      for (var i = 0; i < ws.length; i++) {
+        var local = clamp((prog * (ws.length + 2) - i) / 2, 0, 1);
+        ws[i].style.setProperty("--o", (0.12 + local * 0.88).toFixed(3));
+        ws[i].style.setProperty("--b", ((1 - local) * 10).toFixed(1) + "px");
+        ws[i].style.setProperty("--ty", ((1 - local) * 12).toFixed(1) + "px");
       }
     }
 
-    if (bar) {
+    if (stepsLine) {
       var sr = steps.getBoundingClientRect();
-      bar.style.setProperty("--p", clamp((vh * 0.85 - sr.top) / (vh * 0.5), 0, 1).toFixed(3));
+      stepsLine.style.setProperty("--p", clamp((vh * 0.85 - sr.top) / (vh * 0.5), 0, 1).toFixed(3));
     }
 
-    if (ring && frame % 6 === 0) {
+    if (ind && frame % 6 === 0) {
       var idx = -1;
-      for (var i = 0; i < navTargets.length; i++) {
-        var s = navTargets[i];
-        if (s && s.getBoundingClientRect().top < vh * 0.45) idx = i;
+      for (var k = 0; k < dockTargets.length; k++) {
+        var s = dockTargets[k];
+        if (s && s.getBoundingClientRect().top < vh * 0.5) idx = k;
       }
       setActive(idx);
     }

@@ -14,34 +14,49 @@ Open http://127.0.0.1:5173/ and http://127.0.0.1:5173/es/
 
 ## Design
 
-The visual system is Molten Ace: obsidian, bone, and amber. Headlines are Unbounded and body text is Manrope, both self-hosted from Google Fonts (SIL Open Font License) in `assets/fonts/`.
+**Direction (Nov 2026): liquid glass over molten gold.** A black stage, one gold particle world behind the whole page, and glass UI floating on top. It is inspired by award-winning immersive sites (Noomo, RabenRifaie, Pulztronic) and an AI-agency reference layout. This supersedes the layout and type rules in `design/style-guide.md` (Molten Ace v2.2). The copy rules there and in `design/copy-v3.md` still apply.
 
-The hero is a live 3D robot (see "3D stage" below). The poster in `assets/hero/` is the first paint and the fallback when WebGL is unavailable or `prefers-reduced-motion` is set. The earlier hero video loop is still in `assets/hero/` but no longer on the page. Every generated asset, with its prompt and job id, is in `prompts/asset-prompts.md`.
+- **Type:** Geist for text and UI, plus Instrument Serif italic for the editorial accent word in each headline (`<em>`). Both are self-hosted in `assets/fonts/` (SIL OFL).
+- **Color:** near-black `#060606`, bone text, gold `#FFB547` / `#FF9A2E`.
+- **Liquid glass (`.glass`):** a frosted, tinted base, a gradient rim and a specular highlight that follows the pointer. `.glass--liquid` also refracts what is behind it in Chromium, through an SVG displacement map built in `js/main.js` (`#lg-refract`). Other browsers keep the frosted version.
+- **Loader:** it counts to 100 as the particle world loads, then reveals the hero. There is no click.
+- **Nav:** a floating glass dock at the bottom of the screen with a sliding active pill. On phones it becomes a full-width "Book a call" bar, with a Menu button at the top.
 
-## 3D stage
+Both pages share one layout. Only the words differ.
 
-`js/stage.js` draws one fixed WebGL canvas behind the whole page, and everything in it is driven by scroll position, so it also plays backwards:
+## Particle stage
 
-1. The hero shows the robot chest up, holding its camera. Desktop loads `assets/3d/robot-hd.glb` (3.7 MB, full mesh, 4K textures); phones load `assets/3d/robot.glb` (2 MB, simplified, 2K textures). Both were generated with Higgsfield and compressed with gltf-transform.
-2. Scrolling down dissolves it from the head down. Each piece that breaks off becomes a code glyph that snaps into a column and falls.
-3. The rain falls away as the page begins and stays only as a faint presence behind the content. Scrolling back up re-forms the robot.
+`js/stage.js` draws one fixed WebGL canvas: about 30,000 gold particles (14,000 on phones). Every section names a scene with `data-scene`, and as you scroll the particles flow from shape to shape. Each particle moves on its own slight delay, so shapes pour into each other.
 
-Each section is a station in `STATIONS`, with its own camera angle, distance, where the robot sits on screen, dissolve amount, rain strength and seam heat. Scroll blends between them. The mouse turns the robot a little and shifts the camera.
+| Scene | Shape | Where |
+| --- | --- | --- |
+| `brain` | AI brain, sampled from a Higgsfield 3D model (`assets/3d/brain-points.bin`, 263 KB) | Hero |
+| `brain-far` | the brain, smaller and dimmer | Reel, process |
+| `dust` | loose gold dust, so photos lead | Work, real estate |
+| `lens` | a camera aperture | Services heading |
+| `lattice` | a built structure | Service tracks |
+| `globe` | dotted globe with a Miami beacon | Bilingual |
+| `spade` / `spade-end` | the VeloxLab spade | Contact, footer |
 
-Three.js is self-hosted as `js/vendor/three.bundle.js`, so the recommended `script-src 'self'` policy still holds. To rebuild it, bundle `three@0.169.0` plus the addons named in its header with esbuild (`--bundle --format=esm --minify`). The model uses only quantization and WebP textures, which need no WebAssembly decoder.
+Poses (screen side, scale, brightness) live in `POSE` in `js/stage.js`. The cursor parts the particles and tilts the cloud. With reduced motion the stage draws still frames; without WebGL2 the page keeps its CSS background.
 
-If the device is slow, the stage turns off bloom and lowers resolution after a few seconds.
+Three.js r169 is self-hosted as `js/vendor/three.bundle.js`, tree-shaken to what the stage imports, which keeps the `script-src 'self'` policy. To rebuild it, bundle the named exports in its header from `three@0.169.0` with esbuild (`--bundle --format=esm --minify`).
+
+The robot models in `assets/3d/robot*.glb` and the hero video in `assets/hero/` are from the previous direction and are no longer on the page.
 
 ## Motion
 
-The site follows the motion rules in `design/style-guide.md` §8: one orchestrated hero moment and restraint everywhere else. `js/main.js` ends with a small signature layer:
+The experience layer at the end of `js/main.js` adds:
+- **Loader:** the counter described above.
+- **Lenis smooth scrolling:** with eased anchor jumps.
+- **Liquid glass:** the refraction map and the pointer highlight.
+- **Dock:** the sliding active pill.
+- **Work gallery:** a pinned horizontal gallery on screens 900px and wider; phones get a native swipe row.
+- **Headlines:** they sharpen out of blur word by word as you scroll (`.reveal-words`).
+- **Cards and panels:** soft entrances.
+- **Process:** a line that fills as the steps arrive.
 
-- Lenis smooth scrolling (`js/vendor/lenis.min.js`, MIT) with eased anchor jumps
-- the hero entrance: CREATE and GROW slide in from the left, BUILD from the right, then the subline and Play reel fade in
-- the hero words drifting apart (up to 6vw) as the robot dissolves
-- a 1px amber ring in the nav pill that slides to the section in view, and the process line that fills as the steps enter
-
-Nothing else animates. Body text never moves. Reduced motion turns all of it off.
+Reduced motion turns all of it off.
 
 ## Copy
 

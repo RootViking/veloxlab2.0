@@ -6,7 +6,7 @@
   <title>VeloxLab Studio | Video, sitios web e IA para negocios en Miami</title>
   <meta name="description" content="Estudio creativo y de desarrollo en Miami. Videos de marca, sitios web y seguimiento con IA en español e inglés. Pida su anuncio de prueba gratis." />
   <link rel="canonical" href="https://veloxlab.studio/es/" />
-  <meta name="theme-color" content="#0E0E10" />
+  <meta name="theme-color" content="#060606" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
   <meta property="og:type" content="website" />
@@ -27,9 +27,8 @@
   <link rel="alternate" hreflang="en" href="https://veloxlab.studio/" />
   <link rel="alternate" hreflang="es" href="https://veloxlab.studio/es/" />
   <link rel="alternate" hreflang="x-default" href="https://veloxlab.studio/" />
-
-  <link rel="preload" href="/assets/fonts/Yq6W-LOTXCb04q32xlpwu8Zf.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/assets/fonts/xn7gYHE41ni1AdIRggexSg.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/fonts/fonts.css" />
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/boot.js"></script>
@@ -70,26 +69,39 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="nav" id="top">
-    <a class="logo" href="/">
+  <div class="loader" aria-hidden="true">
+    <div class="loader-mark">
+      <img src="/assets/logo/veloxlab-primary.svg" alt="" width="158" height="22" />
+      <span class="loader-count">0</span>
+    </div>
+    <span class="loader-line"><i></i></span>
+    <span class="loader-label">Cargando</span>
+  </div>
+
+  <header class="nav topbar" id="top">
+    <a class="logo" href="/es/">
       <img src="/assets/logo/veloxlab-primary.svg" alt="VeloxLab" width="158" height="22" />
     </a>
-    <nav class="nav-pill" aria-label="Main">
+    <div class="topbar-end">
+      <div class="lang glass" role="group" aria-label="Language">
+        <a href="/" hreflang="en" lang="en">EN</a>
+        <a href="/es/" hreflang="es" lang="es" aria-current="page">ES</a>
+      </div>
+      <button class="nav-toggle glass" type="button" aria-expanded="false" aria-controls="nav-sheet">Menu</button>
+    </div>
+  </header>
+
+  <nav class="dock glass glass--liquid" aria-label="Main">
+    <a class="dock-mark" href="#top" aria-label="VeloxLab"><img src="/assets/logo/veloxlab-icon.svg" alt="" width="22" height="22" /></a>
+    <span class="dock-links">
       <a href="#work">Trabajo</a>
       <a href="#services">Servicios</a>
       <a href="#real-estate">Bienes raíces</a>
       <a href="#process">Proceso</a>
       <a href="#contact">Contacto</a>
-    </nav>
-    <div class="nav-end">
-      <div class="lang" role="group" aria-label="Language">
-        <a href="/" hreflang="en" lang="en">EN</a>
-        <a href="/es/" hreflang="es" lang="es" aria-current="page">ES</a>
-      </div>
-      <a class="btn btn-primary" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min <span aria-hidden="true">→</span></a>
-    </div>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-sheet">Menu</button>
-  </header>
+    </span>
+    <a class="btn btn-gold dock-cta" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min</a>
+  </nav>
 
   <div class="nav-sheet" id="nav-sheet" hidden>
     <nav aria-label="Mobile">
@@ -99,232 +111,257 @@
       <a href="#process">Proceso</a>
       <a href="#contact">Contacto</a>
     </nav>
-    <div class="lang" role="group" aria-label="Language">
-      <a href="/" hreflang="en" lang="en">EN</a>
-      <a href="/es/" hreflang="es" lang="es" aria-current="page">ES</a>
-    </div>
+    <div class="lang glass" role="group" aria-label="Language">
+        <a href="/" hreflang="en" lang="en">EN</a>
+        <a href="/es/" hreflang="es" lang="es" aria-current="page">ES</a>
+      </div>
   </div>
-  <a class="book-bar" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min <span aria-hidden="true">→</span></a>
 
   <main id="main" tabindex="-1">
-    <div class="hero-frame">
-      <section class="hero-screen" aria-labelledby="hero-title">
-        <div class="hero-media">
-          <picture>
-            <source srcset="/assets/hero/poster.avif" type="image/avif" />
-            <img class="hero-still" src="/assets/hero/poster.webp" alt="" width="1280" height="720" decoding="async" fetchpriority="high" />
-          </picture>
-          <div class="hero-scrim"></div>
-        </div>
-
-        <div class="hero-copy">
-          <p class="kw kw-create"><span class="shift" data-depth="-10">Crea</span></p>
-          <p class="hero-sub">Contenido que lo hace visible. Un sitio que le trae clientes. Dos idiomas, un estudio.</p>
-        </div>
-        <p class="kw kw-build"><span class="shift" data-depth="14">Construye</span></p>
-        <p class="kw kw-grow"><span class="shift" data-depth="-8">Crece</span></p>
-        <h1 class="hero-h1" id="hero-title">Creatividad y desarrollo para su negocio, desde Miami.</h1>
-        <a class="btn btn-outline play-reel" href="#reel">Ver el reel</a>
-      </section>
-    </div>
+    <section class="hero" id="hero" data-scene="brain" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <p class="chip glass">Miami · Español &amp; English</p>
+        <p class="display" aria-hidden="true"><span class="d-line"><span class="d-in">Crea. Construye.</span></span><span class="d-line"><span class="d-in"><em>Crece.</em></span></span></p>
+        <h1 class="hero-title" id="hero-title">Creatividad y desarrollo para su negocio, desde Miami.</h1>
+        <p class="hero-sub">Contenido que lo hace visible. Un sitio que le trae clientes. Dos idiomas, un estudio.</p>
+        <p class="hero-ctas">
+          <a class="btn btn-gold" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min</a>
+          <a class="btn btn-glass glass glass--liquid" href="#reel"><span class="play-dot" aria-hidden="true"></span>Ver el reel</a>
+        </p>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><i></i><span>Desliza</span></div>
+    </section>
 
     <div class="ticker">
       <div class="ticker-track" aria-hidden="true">
         <span>Identidad de marca</span><span>Producción de anuncios</span><span>UGC</span><span>Videos de marca</span><span>Gráficos en movimiento</span><span>Sitios web</span><span>Apps y paneles</span><span>Agentes de IA</span><span>Automatizaciones</span>
         <span>Identidad de marca</span><span>Producción de anuncios</span><span>UGC</span><span>Videos de marca</span><span>Gráficos en movimiento</span><span>Sitios web</span><span>Apps y paneles</span><span>Agentes de IA</span><span>Automatizaciones</span>
       </div>
-      <button class="ticker-pause" type="button" aria-pressed="false" aria-label="Pausar la lista de servicios" data-label-pause="Pausar la lista de servicios" data-label-play="Reanudar la lista de servicios"></button>
+      <button class="ticker-pause glass" type="button" aria-pressed="false" aria-label="Pausar la lista de servicios" data-label-pause="Pausar la lista de servicios" data-label-play="Reanudar la lista de servicios"></button>
     </div>
 
-    <section class="reel wrap" id="reel" aria-labelledby="reel-title">
+    <section class="reel wrap" id="reel" data-scene="brain-far" aria-labelledby="reel-title">
       <h2 class="sr-only" id="reel-title">Reel</h2>
-      <div class="reel-frame" data-placeholder="P19">
+      <div class="reel-frame glass" data-placeholder="P19">
         <p><span class="mark">Showreel · corte de 20–30 s de las seis piezas de abajo (ármelo al final)</span><strong>Showreel</strong></p>
-        <button class="btn btn-outline" type="button">Ver con sonido</button>
+        <button class="btn btn-glass glass glass--liquid" type="button"><span class="play-dot" aria-hidden="true"></span>Ver con sonido</button>
       </div>
       <p class="reel-cap" data-placeholder="P19">El reel · marcas, comida, tiendas, web y bienes raíces</p>
     </section>
 
-    <section class="band wrap" id="work" aria-labelledby="work-title">
-      <div class="work-head">
-        <h2 id="work-title">Trabajos seleccionados</h2>
-        <p class="work-count" aria-live="polite">1 / 6</p>
-        <p class="lede" data-placeholder="P19">Piezas Spec para el portafolio. Genere cada una en Higgsfield y luego suelte el archivo.</p>
+    <section class="work" id="work" data-scene="dust" aria-labelledby="work-title">
+      <div class="work-pin">
+        <div class="wrap work-head">
+          <h2 id="work-title">Trabajos <em>seleccionados</em></h2>
+          <p class="lede" data-placeholder="P19">Piezas Spec para el portafolio. Genere cada una en Higgsfield y luego suelte el archivo.</p>
+          <p class="work-count" aria-live="polite">1 / 6</p>
+        </div>
+        <div class="work-track" tabindex="0" aria-label="Trabajos seleccionados">
+        <figure class="card" data-placeholder="P19">
+          <div class="card-media glass">
+            <picture>
+              <source srcset="/assets/work/cafe-brand-film.avif" type="image/avif" />
+              <img src="/assets/work/cafe-brand-film.webp" alt="Barista sirviendo arte latte con luz cálida" width="1100" height="1375" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <figcaption><span class="card-n">01</span>Spec · Café · Video de marca</figcaption>
+        </figure>
+        <figure class="card" data-placeholder="P19">
+          <div class="card-media glass">
+            <picture>
+              <source srcset="/assets/work/boutique-landing.avif" type="image/avif" />
+              <img src="/assets/work/boutique-landing.webp" alt="Landing page de una boutique en una laptop" width="1100" height="1375" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <figcaption><span class="card-n">02</span>Spec · Boutique · Landing page</figcaption>
+        </figure>
+        <figure class="card" data-placeholder="P19">
+          <div class="card-media glass">
+            <picture>
+              <source srcset="/assets/work/clinic-booking.avif" type="image/avif" />
+              <img src="/assets/work/clinic-booking.webp" alt="Celular con la confirmación de una cita en una clínica" width="1100" height="1375" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <figcaption><span class="card-n">03</span>Spec · Clínica · Automatización de reservas</figcaption>
+        </figure>
+        <figure class="card" data-placeholder="P19">
+          <div class="card-media glass">
+            <picture>
+              <source srcset="/assets/work/listing-film.avif" type="image/avif" />
+              <img src="/assets/work/listing-film.webp" alt="Penthouse en Brickell al anochecer" width="1100" height="1375" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <figcaption><span class="card-n">04</span>Spec · Bienes raíces · Video de propiedad</figcaption>
+        </figure>
+        <figure class="card" data-placeholder="P19">
+          <div class="card-media glass">
+            <picture>
+              <source srcset="/assets/work/food-reel.avif" type="image/avif" />
+              <img src="/assets/work/food-reel.webp" alt="Pescado sellado terminado con soplete" width="1100" height="1375" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <figcaption><span class="card-n">05</span>Spec · Restaurante · Reel de comida</figcaption>
+        </figure>
+        <figure class="card" data-placeholder="P19">
+          <div class="card-media glass">
+            <picture>
+              <source srcset="/assets/work/retail-website.avif" type="image/avif" />
+              <img src="/assets/work/retail-website.webp" alt="Celular con la página de un producto" width="1100" height="1375" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <figcaption><span class="card-n">06</span>Spec · Retail · Sitio web</figcaption>
+        </figure>
+        </div>
       </div>
-      <div class="work-track" tabindex="0" aria-label="Trabajos seleccionados">
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">Video de marca de café · 9:16 · 8–12 s</span></div>
-          <figcaption>Spec · Café · Video de marca</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">Landing de boutique · still 16:9 o loop de UI de 4–6 s</span></div>
-          <figcaption>Spec · Boutique · Landing page</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">UI de reservas de clínica · still 16:9 o loop de 6–8 s</span></div>
-          <figcaption>Spec · Clínica · Automatización de reservas</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">Video de propiedad · 9:16 · 12–15 s · condo en Miami</span></div>
-          <figcaption>Spec · Bienes raíces · Video de propiedad</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">Reel de comida · 9:16 · 6–10 s · plato servido</span></div>
-          <figcaption>Spec · Restaurante · Reel de comida</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">Sitio web de retail · still 16:9 o loop de UI de 4–6 s</span></div>
-          <figcaption>Spec · Retail · Sitio web</figcaption>
-        </figure>
-      </div>
-      <p class="section-cta"><a class="btn btn-outline" href="#work">Ver el proyecto completo</a></p>
+      <p class="wrap section-cta"><a class="btn btn-glass glass" href="#work">Ver el proyecto completo</a></p>
     </section>
 
     <section class="band" id="services" aria-labelledby="services-title">
-      <div class="wrap offers-intro">
-        <h2 id="services-title">Dos formas de trabajar.</h2>
+      <div class="wrap section-head" data-scene="lens">
+        <h2 id="services-title" class="reveal-words">Dos formas <em>de trabajar.</em></h2>
         <p class="lede">Lo creativo lo hace visible. Lo técnico hace que rinda.</p>
       </div>
-      <div class="split-stage">
-        <article class="half half-creative">
-          <div class="half-inner">
-            <h3>Creativo para su negocio</h3>
-            <p class="offer-name">El Paquete Visible</p>
-            <p class="offer-dream">Que lo vean como la mejor opción antes de que llamen.</p>
-            <p class="half-note">Una llamada de 15 minutos. Planeamos las tomas, las filmamos o las creamos con IA, y le entregamos contenido listo para publicar en los dos idiomas.</p>
-            <ul class="offer-rows">
+      <div class="wrap tracks" data-scene="lattice">
+        <article class="track glass">
+          <span class="track-glow" aria-hidden="true"></span>
+          <h3>Creativo <em>para su negocio</em></h3>
+          <p class="offer-name">El Paquete Visible</p>
+          <p class="offer-dream">Que lo vean como la mejor opción antes de que llamen.</p>
+          <p class="half-note">Una llamada de 15 minutos. Planeamos las tomas, las filmamos o las creamos con IA, y le entregamos contenido listo para publicar en los dos idiomas.</p>
+          <ul class="offer-rows">
               <li><span class="row-n">01</span><span><strong>Identidad de marca</strong><em class="offer-desc">Logo, colores, tipografía y un tono que la gente recuerda.</em></span></li>
               <li><span class="row-n">02</span><span><strong>Video de marca</strong><em class="offer-desc">Un video que explica lo que usted hace en menos de un minuto.</em></span></li>
               <li><span class="row-n">03</span><span><strong>Cortes para redes</strong><em class="offer-desc">Reels, anuncios y clips estilo UGC del mismo rodaje. <span data-placeholder="P09">[PLACEHOLDER: número de cortes]</span></em></span></li>
               <li><span class="row-n">04</span><span><strong>En los dos idiomas</strong><em class="offer-desc">Subtítulos o voz en español e inglés en cada pieza.</em></span></li>
               <li><span class="row-n">05</span><span><strong>Gráficos en movimiento</strong><em class="offer-desc">Animación de logo y textos en pantalla con su marca.</em></span></li>
-            </ul>
-            <p>Usted nos da 15 minutos. Nosotros nos encargamos del resto. Primer corte en <span data-placeholder="P07">[PLACEHOLDER: días de entrega]</span> días.</p>
-            <p data-placeholder="P13">[PLACEHOLDER: real client logo/quote/result, hide if none]</p>
-            <p class="guarantee">Si el primer corte no le convence, lo reeditamos. Si después de sus dos rondas de cambios aún no le convence, no paga.</p>
-            <div class="free-offer">
-              <h4>Anuncio de prueba gratis</h4>
-              <p>Véalo antes de pagar. Cuéntenos de su negocio y le hacemos un anuncio vertical corto, gratis.</p>
-              <ul class="bullets">
+          </ul>
+          <p>Usted nos da 15 minutos. Nosotros nos encargamos del resto. Primer corte en <span data-placeholder="P07">[PLACEHOLDER: días de entrega]</span> días.</p>
+          <p data-placeholder="P13">[PLACEHOLDER: real client logo/quote/result, hide if none]</p>
+          <p class="guarantee">Si el primer corte no le convence, lo reeditamos. Si después de sus dos rondas de cambios aún no le convence, no paga.</p>
+          <div class="free-offer glass">
+            <h4>Anuncio de prueba gratis</h4>
+            <p>Véalo antes de pagar. Cuéntenos de su negocio y le hacemos un anuncio vertical corto, gratis.</p>
+            <ul class="bullets">
                 <li>Un anuncio vertical de <span data-placeholder="P09">[PLACEHOLDER: 15–30]</span> s hecho para su negocio</li>
                 <li>En español, inglés o ambos</li>
                 <li>Listo para Instagram, TikTok o Reels</li>
                 <li>Es suyo, sin contrato</li>
                 <li>Se lo entregamos en 5 días</li>
-              </ul>
-              <form class="form" data-form="spec" data-offer="free-spec-ad" data-config="formEndpoint" data-placeholder="P06" novalidate data-msg-required="Fill in this field." data-msg-email="Enter a valid email.">
-                <div class="hp" aria-hidden="true">
-                  <label>Company website<input name="company_website" tabindex="-1" autocomplete="off" /></label>
-                </div>
-                <label>Business name<input name="business" autocomplete="organization" required /></label>
-                <label>Instagram or website<input name="handle" required /></label>
-                <label>Email<span class="field-help">Le enviamos su anuncio aquí. Nada más.</span><input type="email" name="email" autocomplete="email" required /></label>
-                <p class="form-error" role="alert" hidden></p>
-                <p class="form-send-error" role="alert" hidden>No pudimos enviarlo. <span class="form-fallback"><a data-config="whatsapp" data-placeholder="P03" href="">Escríbanos por WhatsApp</a><a data-config="email" data-placeholder="P04" href=""></a></span></p>
-                <button class="btn btn-primary btn-wide" type="submit">Quiero mi anuncio gratis</button>
-                <p class="form-ok" role="status" hidden>Recibido. Le escribimos en 24 horas para empezar su anuncio.</p>
-              </form>
-            </div>
-            <p class="scarcity" data-preview-only hidden>Aceptamos <span data-placeholder="P17">[PLACEHOLDER: número]</span> clientes creativos nuevos al mes.</p>
+            </ul>
+            <form class="form" data-form="spec" data-offer="free-spec-ad" data-config="formEndpoint" data-placeholder="P06" novalidate data-msg-required="Fill in this field." data-msg-email="Enter a valid email.">
+              <div class="hp" aria-hidden="true">
+                <label>Company website<input name="company_website" tabindex="-1" autocomplete="off" /></label>
+              </div>
+              <label>Business name<input name="business" autocomplete="organization" required /></label>
+              <label>Instagram or website<input name="handle" required /></label>
+              <label>Email<span class="field-help">Le enviamos su anuncio aquí. Nada más.</span><input type="email" name="email" autocomplete="email" required /></label>
+              <p class="form-error" role="alert" hidden></p>
+              <p class="form-send-error" role="alert" hidden>No pudimos enviarlo. <span class="form-fallback"><a data-config="whatsapp" data-placeholder="P03" href="">Escríbanos por WhatsApp</a><a data-config="email" data-placeholder="P04" href=""></a></span></p>
+              <button class="btn btn-gold btn-wide" type="submit">Quiero mi anuncio gratis</button>
+              <p class="form-ok" role="status" hidden>Recibido. Le escribimos en 24 horas para empezar su anuncio.</p>
+            </form>
           </div>
+          <p class="scarcity" data-preview-only hidden>Aceptamos <span data-placeholder="P17">[PLACEHOLDER: número]</span> clientes creativos nuevos al mes.</p>
         </article>
-        <article class="half half-dev">
-          <svg class="wire" viewBox="0 0 200 140" aria-hidden="true" fill="none" stroke="#B8BEC6" stroke-width="1">
-            <path d="M20 110 L70 80 L150 80 L180 50 M70 80 L70 30 L150 30 L180 50 L180 100 L150 80 M70 30 L20 60 L20 110" />
-          </svg>
-          <div class="half-inner">
-            <h3>Desarrollo a su medida</h3>
-            <p class="offer-name">Lo Construimos por Usted</p>
-            <p class="offer-dream">Un sitio web que le consigue clientes mientras usted trabaja.</p>
-            <p class="half-note">Auditamos, construimos y automatizamos. Encontramos dónde se le escapan los clientes, construimos la solución y la conectamos para que siga funcionando sin usted.</p>
-            <ul class="offer-rows">
+        <article class="track glass">
+          <span class="track-glow" aria-hidden="true"></span>
+          <h3>Desarrollo <em>a su medida</em></h3>
+          <p class="offer-name">Lo Construimos por Usted</p>
+          <p class="offer-dream">Un sitio web que le consigue clientes mientras usted trabaja.</p>
+          <p class="half-note">Auditamos, construimos y automatizamos. Encontramos dónde se le escapan los clientes, construimos la solución y la conectamos para que siga funcionando sin usted.</p>
+          <ul class="offer-rows">
               <li><span class="row-n">01</span><span><strong>Sitio web o landing page</strong><em class="offer-desc">Rápido, pensado para el celular y hecho para que lo llamen, reserven o le escriban.</em></span></li>
               <li><span class="row-n">02</span><span><strong>Reservas y contactos</strong><em class="offer-desc">Formularios, calendario y WhatsApp conectados para que ninguna consulta se pierda.</em></span></li>
               <li><span class="row-n">03</span><span><strong>App o panel</strong><em class="offer-desc">Herramientas internas, portal de clientes y datos en vivo, si los necesita.</em></span></li>
               <li><span class="row-n">04</span><span><strong>Asistente con IA y seguimiento</strong><em class="offer-desc">Responde las preguntas de siempre y da seguimiento en español e inglés.</em></span></li>
               <li><span class="row-n">05</span><span><strong>Lanzamiento y entrega</strong><em class="offer-desc">Hosting listo, un video corto de cómo usarlo y <span data-placeholder="P14">[PLACEHOLDER: periodo de soporte]</span> de ajustes.</em></span></li>
-            </ul>
-            <p>No tiene que saber de tecnología. Usted aprueba y nosotros construimos. Demo funcionando en <span data-placeholder="P07">[PLACEHOLDER: días de entrega]</span> días.</p>
-            <p data-placeholder="P13">[PLACEHOLDER: real site/screenshot/result, hide if none]</p>
-            <p class="guarantee">Si la demo no es lo que pidió, se va sin deber nada.</p>
-            <div class="free-offer">
-              <h4>Auditoría de IA gratis de 15 minutos</h4>
-              <p>Quince minutos por llamada. Vemos cómo consigue y atiende a sus clientes hoy y le decimos qué arreglar primero.</p>
-              <ul class="bullets">
+          </ul>
+          <p>No tiene que saber de tecnología. Usted aprueba y nosotros construimos. Demo funcionando en <span data-placeholder="P07">[PLACEHOLDER: días de entrega]</span> días.</p>
+          <p data-placeholder="P13">[PLACEHOLDER: real site/screenshot/result, hide if none]</p>
+          <p class="guarantee">Si la demo no es lo que pidió, se va sin deber nada.</p>
+          <div class="free-offer glass">
+            <h4>Auditoría de IA gratis de 15 minutos</h4>
+            <p>Quince minutos por llamada. Vemos cómo consigue y atiende a sus clientes hoy y le decimos qué arreglar primero.</p>
+            <ul class="bullets">
                 <li>Dónde pierde tiempo o clientes</li>
                 <li>Una o dos mejoras con IA que puede usar este mes</li>
                 <li>Un estimado para un sitio, app o asistente</li>
                 <li>Un resumen por escrito después de la llamada</li>
-              </ul>
-              <p class="field-help">Sin presión y sin compromiso.</p>
-              <a class="btn btn-outline btn-wide" data-config="calAudit" data-placeholder="P02" href="">Elegir hora para mi auditoría</a>
-            </div>
-            <p class="scarcity" data-preview-only hidden>Trabajamos <span data-placeholder="P17">[PLACEHOLDER: número]</span> proyectos a la vez.</p>
+            </ul>
+            <p class="field-help">Sin presión y sin compromiso.</p>
+            <a class="btn btn-glass glass btn-wide" data-config="calAudit" data-placeholder="P02" href="">Elegir hora para mi auditoría</a>
           </div>
+          <p class="scarcity" data-preview-only hidden>Trabajamos <span data-placeholder="P17">[PLACEHOLDER: número]</span> proyectos a la vez.</p>
         </article>
-        <div class="seam-wrap" aria-hidden="true">
-          <div class="seam-line"></div>
-          <div class="drip"><img src="/assets/logo/veloxlab-icon.svg" alt="" width="28" height="28" /></div>
-        </div>
       </div>
     </section>
 
-    <section class="band wrap" id="real-estate" aria-labelledby="spot-title">
-      <div class="spot">
-        <div>
-          <h2 id="spot-title">Bienes raíces, por ejemplo.</h2>
+    <section class="band" id="real-estate" data-scene="dust" aria-labelledby="spot-title">
+      <div class="wrap spot">
+        <div class="spot-media">
+          <div class="spot-frame glass" data-placeholder="P12">
+            <picture>
+              <source srcset="/assets/work/listing-waterfront.avif" type="image/avif" />
+              <img src="/assets/work/listing-waterfront.webp" alt="" width="1600" height="905" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <p class="spot-cap" data-placeholder="P12">Spec de propiedad · estilo Brickell · film + 2 reels (9:16)</p>
+        </div>
+        <div class="spot-copy">
+          <h2 id="spot-title" class="reveal-words">Bienes raíces, <em>por ejemplo.</em></h2>
           <p class="lede">En Miami los compradores ven contenido en dos idiomas. Hacemos videos y reels de propiedades que les hablan a los dos, para que su propiedad llegue a más gente que puede comprarla.</p>
           <ul class="outcomes">
             <li data-placeholder="P12">Consultas en los dos idiomas</li>
             <li data-placeholder="P12">Más rápido de la propiedad a la publicación</li>
             <li data-placeholder="P12">Una página de la propiedad más limpia</li>
           </ul>
-        </div>
-        <div>
-          <div class="reel-frame" data-placeholder="P12"></div>
-          <p data-placeholder="P12">Spec de propiedad · estilo Brickell · film + 2 reels (9:16)</p>
-          <p><a class="btn btn-outline" href="/es/?topic=real-estate#contact">Pida un anuncio de prueba para su propiedad</a></p>
+          <p><a class="btn btn-glass glass glass--liquid" href="/es/?topic=real-estate#contact">Pida un anuncio de prueba para su propiedad</a></p>
           <p class="field-help">Envíenos el enlace de una propiedad y le mostramos cómo podría verse.</p>
         </div>
       </div>
     </section>
 
-    <section class="band wrap" id="process" aria-labelledby="process-title">
-      <h2 id="process-title">Cómo trabajamos</h2>
-      <ol class="steps">
-        <li><span class="step-n">01</span><h3>Brief</h3><p>Una llamada de 15 minutos sobre sus metas, sus clientes y el estilo que busca.</p></li>
-        <li><span class="step-n">02</span><h3>Creamos o construimos</h3><p>Le entregamos el primer corte o una demo funcionando en <span data-placeholder="P07">[PLACEHOLDER: días]</span> días.</p></li>
-        <li><span class="step-n">03</span><h3>Ajustes</h3><p>Incluye dos rondas de cambios.</p></li>
-        <li><span class="step-n">04</span><h3>Lanzamiento</h3><p>Su contenido listo para publicar, o su sitio, app o asistente en línea.</p></li>
-      </ol>
-      <p class="section-cta"><a class="btn btn-primary" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min</a></p>
+    <section class="band" id="process" data-scene="brain-far" aria-labelledby="process-title">
+      <div class="wrap">
+        <h2 id="process-title" class="reveal-words">Cómo <em>trabajamos</em></h2>
+        <ol class="steps">
+        <li class="step glass"><span class="step-n">01</span><h3>Brief</h3><p>Una llamada de 15 minutos sobre sus metas, sus clientes y el estilo que busca.</p></li>
+        <li class="step glass"><span class="step-n">02</span><h3>Creamos o construimos</h3><p>Le entregamos el primer corte o una demo funcionando en <span data-placeholder="P07">[PLACEHOLDER: días]</span> días.</p></li>
+        <li class="step glass"><span class="step-n">03</span><h3>Ajustes</h3><p>Incluye dos rondas de cambios.</p></li>
+        <li class="step glass"><span class="step-n">04</span><h3>Lanzamiento</h3><p>Su contenido listo para publicar, o su sitio, app o asistente en línea.</p></li>
+        </ol>
+        <p class="section-cta"><a class="btn btn-gold" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min</a></p>
+      </div>
     </section>
 
-    <section class="band wrap" id="about" aria-labelledby="why-title">
-      <h2 id="why-title">Miami habla dos idiomas. Su negocio también debería.</h2>
-      <p class="why-lead">Escribimos en español y en inglés desde el principio. Sus clientes hispanos reciben mensajes pensados para ellos, no pasados por un traductor, y sus clientes en inglés reciben el mismo cuidado.</p>
-      <ul class="pillars">
-        <li><strong>Nativo en los dos</strong> Cada texto, guion y página escrito desde cero en cada idioma.</li>
-        <li><strong>Calidad premium</strong> Video y diseño cinematográficos que lo ponen al nivel de los grandes de su mercado.</li>
-        <li><strong>Un solo estudio</strong> Contenido, sitio web y automatizaciones del mismo equipo, sin perder nada entre proveedores.</li>
-      </ul>
-      <blockquote data-placeholder="P11">[PLACEHOLDER: real testimonial, name, business]</blockquote>
-      <p class="section-cta"><a class="btn btn-primary" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min</a></p>
+    <section class="band" id="about" data-scene="globe" aria-labelledby="why-title">
+      <div class="wrap about">
+        <h2 id="why-title" class="reveal-words">Miami habla dos idiomas. <em>Su negocio también debería.</em></h2>
+        <p class="why-lead lede">Escribimos en español y en inglés desde el principio. Sus clientes hispanos reciben mensajes pensados para ellos, no pasados por un traductor, y sus clientes en inglés reciben el mismo cuidado.</p>
+        <ul class="pillars">
+        <li class="glass"><strong>Nativo en los dos</strong> Cada texto, guion y página escrito desde cero en cada idioma.</li>
+        <li class="glass"><strong>Calidad premium</strong> Video y diseño cinematográficos que lo ponen al nivel de los grandes de su mercado.</li>
+        <li class="glass"><strong>Un solo estudio</strong> Contenido, sitio web y automatizaciones del mismo equipo, sin perder nada entre proveedores.</li>
+        </ul>
+        <blockquote class="glass" data-placeholder="P11">[PLACEHOLDER: real testimonial, name, business]</blockquote>
+        <p class="section-cta"><a class="btn btn-gold" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min</a></p>
+      </div>
     </section>
 
-    <section class="band" id="contact" aria-labelledby="contact-title">
-      <div class="wrap contact-grid">
-        <div>
-          <h2 id="contact-title">Cuéntenos qué necesita. Le respondemos con un plan.</h2>
-          <p class="lede">Reserve una llamada de 15 minutos, o escríbanos y le respondemos en 24 horas.</p>
-          <p><a class="btn btn-primary" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min</a></p>
-          <div class="contact-meta">
-            <a data-config="whatsapp" data-placeholder="P03" href="">Escríbanos por WhatsApp</a>
-            <a data-config="email" data-placeholder="P04" href=""></a>
-            <p>Miami, FL</p>
+    <section class="band" id="contact" data-scene="spade" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="contact-panel glass">
+          <div class="contact-copy">
+            <h2 id="contact-title">Cuéntenos qué necesita. <em>Le respondemos con un plan.</em></h2>
+            <p class="lede">Reserve una llamada de 15 minutos, o escríbanos y le respondemos en 24 horas.</p>
+            <p><a class="btn btn-gold" data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min</a></p>
+            <div class="contact-meta">
+              <a data-config="whatsapp" data-placeholder="P03" href="">Escríbanos por WhatsApp</a>
+              <a data-config="email" data-placeholder="P04" href=""></a>
+              <p>Miami, FL</p>
+            </div>
           </div>
-        </div>
-        <form class="form" id="booking" data-form="contact" data-offer="contact" data-config="formEndpoint" data-placeholder="P06" novalidate data-msg-required="Fill in this field." data-msg-email="Enter a valid email.">
+          <form class="form" id="booking" data-form="contact" data-offer="contact" data-config="formEndpoint" data-placeholder="P06" novalidate data-msg-required="Fill in this field." data-msg-email="Enter a valid email.">
           <div class="hp" aria-hidden="true">
             <label>Company website<input name="company_website" tabindex="-1" autocomplete="off" /></label>
           </div>
@@ -347,30 +384,30 @@
               <option value="es" selected>ES</option>
             </select>
           </label>
-          <label>Message<span class="field-help">¿Qué quiere que hagan sus clientes?</span><textarea name="message" required></textarea></label>
+          <label class="span-2">Message<span class="field-help">¿Qué quiere que hagan sus clientes?</span><textarea name="message" required></textarea></label>
           <p class="form-error" role="alert" hidden></p>
           <p class="form-send-error" role="alert" hidden>No pudimos enviarlo. <span class="form-fallback"><a data-config="whatsapp" data-placeholder="P03" href="">Escríbanos por WhatsApp</a><a data-config="email" data-placeholder="P04" href=""></a></span></p>
-          <button class="btn btn-primary" type="submit">Enviar y recibir mi plan</button>
+          <button class="btn btn-gold btn-wide" type="submit">Enviar y recibir mi plan</button>
           <p class="form-ok" role="status" hidden>Gracias. Le respondemos en 24 horas.</p>
         </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <img class="giant" src="/assets/logo/veloxlab-watermark.svg" alt="" width="1400" height="180" />
-    <div class="footer-grid">
+  <footer class="footer" data-scene="spade-end">
+    <div class="wrap footer-grid">
       <div>
         <img src="/assets/logo/veloxlab-primary.svg" alt="VeloxLab" width="158" height="22" />
         <p class="lede">Estudio creativo y de desarrollo · Miami · Español &amp; English</p>
         <p>¿Tiene un proyecto? <a data-config="calIntro" data-placeholder="P01" href="">Agendar llamada de 15 min</a></p>
       </div>
       <nav aria-label="Footer">
-        <a href="#work">Trabajo</a>
-        <a href="#services">Servicios</a>
-        <a href="#real-estate">Bienes raíces</a>
-        <a href="#process">Proceso</a>
-        <a href="#contact">Contacto</a>
+      <a href="#work">Trabajo</a>
+      <a href="#services">Servicios</a>
+      <a href="#real-estate">Bienes raíces</a>
+      <a href="#process">Proceso</a>
+      <a href="#contact">Contacto</a>
       </nav>
       <div>
         <p class="socials">
@@ -382,8 +419,16 @@
         <p class="contact-meta"><a data-config="email" data-placeholder="P04" href=""></a></p>
       </div>
     </div>
-    <p class="legal">© 2026 VeloxLab Studio · <a href="/privacy.html">Privacidad</a></p>
+    <p class="giant" aria-hidden="true">Velox<em>Lab</em></p>
+    <p class="wrap legal">© 2026 VeloxLab Studio · <a href="/privacy.html">Privacidad</a></p>
   </footer>
+
+  <svg class="lg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="lg-refract" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feImage class="lg-map" preserveAspectRatio="none" result="map" />
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="38" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
 
   <script src="/js/vendor/lenis.min.js" defer></script>
   <script src="/js/config.js" defer></script>

@@ -36,4 +36,33 @@ Every AI-generated asset on the site, with the exact prompt, so it can be regene
 - Post: `gltf-transform optimize --compress quantize --texture-compress webp --texture-size 2048 --simplify-ratio 0.6 --simplify-error 0.0005` → `assets/3d/robot.glb` (1.98 MB, 69k triangles)
 - Desktop build: `gltf-transform optimize --compress quantize --texture-compress webp --texture-size 4096 --simplify false` → `assets/3d/robot-hd.glb` (3.72 MB, 115k triangles, 4K textures)
 
-Total spent: 58.25 credits.
+Total spent for the robot direction: 58.25 credits.
+
+## Redesign: brain point cloud (2026-11-08)
+
+- Source image: `gpt_image_2_5`, high, 2k, 1:1 (2.75 credits). Job `145b0a4d-2bcd-4d25-af46-a5bd6739ea22`.
+
+> Studio product photo of a single anatomical human brain sculpture, the complete brain including cerebrum, cerebellum and brain stem, seen from a three-quarter side view, smooth matte white clay material with clearly defined gyri and sulci folds, centered and fully in frame with generous margin, isolated on a plain seamless neutral mid-grey background, soft even diffuse lighting, no shadows on the background, no stand, no text, sharp focus, high detail, for 3D reconstruction.
+
+- 3D: `tripo_h3_1_image_to_3d`, geometry only, detailed (12 credits). Job `1227a672-5207-4894-9bc5-dbe9183efd49` (54 MB GLB, 1.9M triangles).
+- Post: 30,000 surface points sampled by triangle area, with normals, quantized to int16/int8, then saved as `assets/3d/brain-points.bin` (263 KB). Layout: uint32 count, then int16 xyz × count, then int8 normal xyz × count.
+
+## Redesign: spec portfolio stills (2026-11-08)
+
+`gpt_image_2_5`, high, 2k, 4:5 except the listing (16:9), 2.75 credits each. Every prompt starts with the same style preamble:
+
+> Cinematic editorial photograph, warm molten-amber key light, deep black shadows, lifted blacks, subtle film grain, 35mm lens, shallow depth of field, Miami, premium and restrained, no text, no logos.
+
+| File (`assets/work/`) | Job | Subject |
+| --- | --- | --- |
+| `cafe-brand-film` | `14b18ffd-5948-4952-ab25-932e5c1f9713` | barista pouring latte art, walnut counter, steam in side light |
+| `boutique-landing` | `29646ac0-dd41-44b4-89e2-e66c272c57ca` | laptop on travertine in a dim boutique showing a fashion landing page |
+| `clinic-booking` | `4f36f5a7-2577-45e0-b447-f9c772807cf1` | phone with a booking confirmation in an upscale clinic waiting room |
+| `listing-film` | `57b6e1ce-824c-4d8f-8502-7c29e3bc37ac` | Brickell penthouse interior at blue hour |
+| `food-reel` | `d3cde5fb-1bff-42bb-9b5f-1c28a49f8330` | seared fish, charred citrus, torch flame and sparks |
+| `retail-website` | `05d1b8be-2730-4ded-b544-6cf19c856ccb` | phone on folded tees showing a product page |
+| `listing-waterfront` | `78703f2d-4cee-4135-9e88-bfe71ae52798` | waterfront residence at dusk, infinity pool, Biscayne Bay skyline |
+
+Encoded to WebP (q78) and AVIF (q55), 1100px wide (listing 1600px).
+
+Redesign spend: 34 credits.
