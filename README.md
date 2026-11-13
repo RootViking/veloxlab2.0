@@ -24,6 +24,12 @@ Open http://127.0.0.1:5173/ and http://127.0.0.1:5173/es/
 
 Both pages share one layout. Only the words differ.
 
+**Placeholders.**
+- Facts confirmed by Sadiel on Nov 13 are filled in: a 5-day first cut or demo, 14 days of fixes after launch, and no social-cut count.
+- Proof, testimonial and work-subline slots stay out of the page until real, as `design/copy-v3.md` says.
+- WhatsApp links are replaced by the email link.
+- Any `data-config` link whose value in `js/config.js` still contains `PLACEHOLDER` hides itself, which currently covers the social profiles.
+
 ## Particle stage
 
 `js/stage.js` draws one fixed WebGL canvas: about 30,000 gold particles (14,000 on phones). Every section names a scene with `data-scene`, and as you scroll the particles flow from shape to shape. Each particle moves on its own slight delay, so shapes pour into each other.
@@ -37,6 +43,8 @@ Both pages share one layout. Only the words differ.
 | `lattice` | a built structure | Service tracks |
 | `globe` | dotted globe with a Miami beacon | Bilingual |
 | `spade` / `spade-end` | the VeloxLab spade | Contact, footer |
+
+The hero brain also carries about 1,800 synapse links between nearby surface points, each with a pulse of light travelling along it. They fade out whenever the particles leave the brain shape.
 
 Poses (screen side, scale, brightness) live in `POSE` in `js/stage.js`. The cursor parts the particles and tilts the cloud. With reduced motion the stage draws still frames; without WebGL2 the page keeps its CSS background.
 
@@ -53,6 +61,7 @@ The experience layer at the end of `js/main.js` adds:
 - **Dock:** the sliding active pill.
 - **Work gallery:** a pinned horizontal gallery on screens 900px and wider; phones get a native swipe row.
 - **Headlines:** they sharpen out of blur word by word as you scroll (`.reveal-words`).
+- **Work in motion:** each work card plays a short seamless loop of its piece while it is on screen (loaded lazily, paused off screen, skipped with reduced motion or data saver). Clicking a card, "Play the reel" or "See the full project" opens a glass case-study viewer sized to the clip; Esc or clicking outside closes it and returns focus.
 - **Cards and panels:** soft entrances.
 - **Process:** a line that fills as the steps arrive.
 

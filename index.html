@@ -8,7 +8,6 @@
   <link rel="canonical" href="https://veloxlab.studio/" />
   <meta name="theme-color" content="#060606" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="VeloxLab Studio" />
   <meta property="og:locale" content="en_US" />
@@ -23,7 +22,6 @@
   <meta name="twitter:title" content="VeloxLab Studio | Video, Websites &amp; AI for Miami Businesses" />
   <meta name="twitter:description" content="Miami creative and development studio. Brand videos, websites and AI follow-up in English and Spanish. Get a free spec ad or a 15-min AI audit." />
   <meta name="twitter:image" content="https://veloxlab.studio/assets/og.jpg" />
-
   <link rel="alternate" hreflang="en" href="https://veloxlab.studio/" />
   <link rel="alternate" hreflang="es" href="https://veloxlab.studio/es/" />
   <link rel="alternate" hreflang="x-default" href="https://veloxlab.studio/" />
@@ -32,7 +30,6 @@
   <link rel="stylesheet" href="/assets/fonts/fonts.css" />
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/boot.js"></script>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -68,7 +65,6 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-
   <div class="loader" aria-hidden="true">
     <div class="loader-mark">
       <img src="/assets/logo/veloxlab-primary.svg" alt="" width="158" height="22" />
@@ -77,12 +73,10 @@
     <span class="loader-line"><i></i></span>
     <span class="loader-label">Loading</span>
   </div>
-
   <div class="lang-suggest glass" data-lang-suggest hidden>
     <p>This page is in English. <a href="/es/">Ver en español</a></p>
     <button type="button" data-lang-dismiss>Dismiss</button>
   </div>
-
   <header class="nav topbar" id="top">
     <a class="logo" href="/">
       <img src="/assets/logo/veloxlab-primary.svg" alt="VeloxLab" width="158" height="22" />
@@ -95,7 +89,6 @@
       <button class="nav-toggle glass" type="button" aria-expanded="false" aria-controls="nav-sheet">Menu</button>
     </div>
   </header>
-
   <nav class="dock glass glass--liquid" aria-label="Main">
     <a class="dock-mark" href="#top" aria-label="VeloxLab"><img src="/assets/logo/veloxlab-icon.svg" alt="" width="22" height="22" /></a>
     <span class="dock-links">
@@ -107,7 +100,6 @@
     </span>
     <a class="btn btn-gold dock-cta" data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call</a>
   </nav>
-
   <div class="nav-sheet" id="nav-sheet" hidden>
     <nav aria-label="Mobile">
       <a href="#work">Work</a>
@@ -121,7 +113,6 @@
         <a href="/es/" hreflang="es" lang="es">ES</a>
       </div>
   </div>
-
   <main id="main" tabindex="-1">
     <section class="hero" id="hero" data-scene="brain" aria-labelledby="hero-title">
       <div class="wrap hero-inner">
@@ -136,7 +127,6 @@
       </div>
       <div class="scroll-hint" aria-hidden="true"><i></i><span>Scroll</span></div>
     </section>
-
     <div class="ticker">
       <div class="ticker-track" aria-hidden="true">
         <span>Brand identity</span><span>AI ad production</span><span>UGC</span><span>Brand films</span><span>Motion graphics</span><span>Websites</span><span>Apps &amp; dashboards</span><span>AI agents</span><span>Automations</span>
@@ -144,22 +134,24 @@
       </div>
       <button class="ticker-pause glass" type="button" aria-pressed="false" aria-label="Pause the service list" data-label-pause="Pause the service list" data-label-play="Play the service list"></button>
     </div>
-
     <section class="reel wrap" id="reel" data-scene="brain-far" aria-labelledby="reel-title">
       <h2 class="sr-only" id="reel-title">Reel</h2>
       <div class="reel-frame glass" data-placeholder="P19">
-        <p><span class="mark">Showreel · 20–30s cut of the six pieces below (assemble last)</span><strong>Showreel</strong></p>
-        <button class="btn btn-glass glass glass--liquid" type="button"><span class="play-dot" aria-hidden="true"></span>Play with sound</button>
+        <video class="reel-video" muted loop playsinline preload="none" poster="/assets/work/reel-poster.jpg" aria-hidden="true" tabindex="-1">
+          <source data-src="/assets/work/reel.webm" type="video/webm" />
+          <source data-src="/assets/work/reel.mp4" type="video/mp4" />
+        </video>
+        <p class="reel-label" aria-hidden="true"><strong>Showreel</strong></p>
+        <button class="btn btn-glass glass glass--liquid reel-open" type="button" data-video="/assets/work/reel" data-caption="The reel · brands, food, retail, web and real estate"><span class="play-dot" aria-hidden="true"></span>Play the reel</button>
       </div>
       <p class="reel-cap" data-placeholder="P19">The reel · brands, food, retail, web and real estate</p>
     </section>
-
     <section class="work" id="work" data-scene="dust" aria-labelledby="work-title">
       <div class="work-pin">
         <div class="wrap work-head">
           <h2 id="work-title">Selected <em>work</em></h2>
-          <p class="lede" data-placeholder="P19">Spec pieces for the portfolio. Generate each in Higgsfield, then drop the file in.</p>
           <p class="work-count" aria-live="polite">1 / 6</p>
+          <p class="work-cta"><button class="btn btn-glass glass glass--liquid reel-open" type="button" data-video="/assets/work/reel" data-caption="The reel · brands, food, retail, web and real estate"><span class="play-dot" aria-hidden="true"></span>See the full project</button></p>
         </div>
         <div class="work-track" tabindex="0" aria-label="Selected work">
         <figure class="card" data-placeholder="P19">
@@ -168,6 +160,11 @@
               <source srcset="/assets/work/cafe-brand-film.avif" type="image/avif" />
               <img src="/assets/work/cafe-brand-film.webp" alt="Barista pouring latte art in warm light" width="1100" height="1375" loading="lazy" decoding="async" />
             </picture>
+            <video class="card-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source data-src="/assets/work/cafe-brand-film.webm" type="video/webm" />
+              <source data-src="/assets/work/cafe-brand-film.mp4" type="video/mp4" />
+            </video>
+            <button class="card-open" type="button" data-video="/assets/work/cafe-brand-film" data-caption="Spec · Café · Brand film" aria-label="Play: Spec · Café · Brand film"><span class="card-play glass glass--liquid" aria-hidden="true"><span class="play-dot"></span></span></button>
           </div>
           <figcaption><span class="card-n">01</span>Spec · Café · Brand film</figcaption>
         </figure>
@@ -177,6 +174,11 @@
               <source srcset="/assets/work/boutique-landing.avif" type="image/avif" />
               <img src="/assets/work/boutique-landing.webp" alt="Boutique landing page on a laptop" width="1100" height="1375" loading="lazy" decoding="async" />
             </picture>
+            <video class="card-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source data-src="/assets/work/boutique-landing.webm" type="video/webm" />
+              <source data-src="/assets/work/boutique-landing.mp4" type="video/mp4" />
+            </video>
+            <button class="card-open" type="button" data-video="/assets/work/boutique-landing" data-caption="Spec · Boutique · Landing page" aria-label="Play: Spec · Boutique · Landing page"><span class="card-play glass glass--liquid" aria-hidden="true"><span class="play-dot"></span></span></button>
           </div>
           <figcaption><span class="card-n">02</span>Spec · Boutique · Landing page</figcaption>
         </figure>
@@ -186,6 +188,11 @@
               <source srcset="/assets/work/clinic-booking.avif" type="image/avif" />
               <img src="/assets/work/clinic-booking.webp" alt="Phone showing a clinic booking confirmation" width="1100" height="1375" loading="lazy" decoding="async" />
             </picture>
+            <video class="card-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source data-src="/assets/work/clinic-booking.webm" type="video/webm" />
+              <source data-src="/assets/work/clinic-booking.mp4" type="video/mp4" />
+            </video>
+            <button class="card-open" type="button" data-video="/assets/work/clinic-booking" data-caption="Spec · Clinic · Booking automation" aria-label="Play: Spec · Clinic · Booking automation"><span class="card-play glass glass--liquid" aria-hidden="true"><span class="play-dot"></span></span></button>
           </div>
           <figcaption><span class="card-n">03</span>Spec · Clinic · Booking automation</figcaption>
         </figure>
@@ -195,6 +202,11 @@
               <source srcset="/assets/work/listing-film.avif" type="image/avif" />
               <img src="/assets/work/listing-film.webp" alt="Brickell penthouse at blue hour" width="1100" height="1375" loading="lazy" decoding="async" />
             </picture>
+            <video class="card-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source data-src="/assets/work/listing-film.webm" type="video/webm" />
+              <source data-src="/assets/work/listing-film.mp4" type="video/mp4" />
+            </video>
+            <button class="card-open" type="button" data-video="/assets/work/listing-film" data-caption="Spec · Real estate · Listing film" aria-label="Play: Spec · Real estate · Listing film"><span class="card-play glass glass--liquid" aria-hidden="true"><span class="play-dot"></span></span></button>
           </div>
           <figcaption><span class="card-n">04</span>Spec · Real estate · Listing film</figcaption>
         </figure>
@@ -204,6 +216,11 @@
               <source srcset="/assets/work/food-reel.avif" type="image/avif" />
               <img src="/assets/work/food-reel.webp" alt="Seared fish finished with a torch" width="1100" height="1375" loading="lazy" decoding="async" />
             </picture>
+            <video class="card-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source data-src="/assets/work/food-reel.webm" type="video/webm" />
+              <source data-src="/assets/work/food-reel.mp4" type="video/mp4" />
+            </video>
+            <button class="card-open" type="button" data-video="/assets/work/food-reel" data-caption="Spec · Restaurant · Food reel" aria-label="Play: Spec · Restaurant · Food reel"><span class="card-play glass glass--liquid" aria-hidden="true"><span class="play-dot"></span></span></button>
           </div>
           <figcaption><span class="card-n">05</span>Spec · Restaurant · Food reel</figcaption>
         </figure>
@@ -213,14 +230,17 @@
               <source srcset="/assets/work/retail-website.avif" type="image/avif" />
               <img src="/assets/work/retail-website.webp" alt="Phone showing a retail product page" width="1100" height="1375" loading="lazy" decoding="async" />
             </picture>
+            <video class="card-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source data-src="/assets/work/retail-website.webm" type="video/webm" />
+              <source data-src="/assets/work/retail-website.mp4" type="video/mp4" />
+            </video>
+            <button class="card-open" type="button" data-video="/assets/work/retail-website" data-caption="Spec · Retail · Website" aria-label="Play: Spec · Retail · Website"><span class="card-play glass glass--liquid" aria-hidden="true"><span class="play-dot"></span></span></button>
           </div>
           <figcaption><span class="card-n">06</span>Spec · Retail · Website</figcaption>
         </figure>
         </div>
       </div>
-      <p class="wrap section-cta"><a class="btn btn-glass glass" href="#work">See the full project</a></p>
     </section>
-
     <section class="band" id="services" aria-labelledby="services-title">
       <div class="wrap section-head" data-scene="lens">
         <h2 id="services-title" class="reveal-words">Two ways <em>we work.</em></h2>
@@ -236,18 +256,17 @@
           <ul class="offer-rows">
               <li><span class="row-n">01</span><span><strong>Brand identity</strong><em class="offer-desc">Logo, colors, type and a voice people remember.</em></span></li>
               <li><span class="row-n">02</span><span><strong>Brand film</strong><em class="offer-desc">One video that explains what you do in under a minute.</em></span></li>
-              <li><span class="row-n">03</span><span><strong>Social cuts</strong><em class="offer-desc">Reels, ads and UGC-style clips from the same shoot. <span data-placeholder="P09">[PLACEHOLDER: number of cuts]</span></em></span></li>
+              <li><span class="row-n">03</span><span><strong>Social cuts</strong><em class="offer-desc">Reels, ads and UGC-style clips from the same shoot.</em></span></li>
               <li><span class="row-n">04</span><span><strong>Both languages</strong><em class="offer-desc">English and Spanish captions or voice-over on every piece.</em></span></li>
               <li><span class="row-n">05</span><span><strong>Motion graphics</strong><em class="offer-desc">Logo animation and on-screen text that match your brand.</em></span></li>
           </ul>
-          <p>You give us 15 minutes. We handle the rest. First cut in <span data-placeholder="P07">[PLACEHOLDER: turnaround days]</span> days.</p>
-          <p data-placeholder="P13">[PLACEHOLDER: real client logo/quote/result, hide if none]</p>
+          <p>You give us 15 minutes. We handle the rest. First cut in 5 days.</p>
           <p class="guarantee">If the first cut isn't right, we re-edit it. If it still isn't right after your two rounds of changes, you don't pay.</p>
           <div class="free-offer glass">
             <h4>Free Spec Ad</h4>
             <p>See it before you pay for it. Send us your business and we'll make you a short vertical ad, free.</p>
             <ul class="bullets">
-                <li>A <span data-placeholder="P09">[PLACEHOLDER: 15–30]</span>s vertical ad made for your business</li>
+                <li>A 15–30s vertical ad made for your business</li>
                 <li>In English, Spanish or both</li>
                 <li>Ready for Instagram, TikTok or Reels</li>
                 <li>Yours to keep, with no contract</li>
@@ -261,7 +280,7 @@
               <label>Instagram or website<input name="handle" required /></label>
               <label>Email<span class="field-help">We'll send your ad here. Nothing else.</span><input type="email" name="email" autocomplete="email" required /></label>
               <p class="form-error" role="alert" hidden></p>
-              <p class="form-send-error" role="alert" hidden>We couldn't send that. <span class="form-fallback"><a data-config="whatsapp" data-placeholder="P03" href="">Message us on WhatsApp</a><a data-config="email" data-placeholder="P04" href=""></a></span></p>
+              <p class="form-send-error" role="alert" hidden>We couldn't send that. <span class="form-fallback"><a data-config="email" data-placeholder="P04" href=""></a></span></p>
               <button class="btn btn-gold btn-wide" type="submit">Get my free spec ad</button>
               <p class="form-ok" role="status" hidden>Got it. We'll email you within 24 hours to start your ad.</p>
             </form>
@@ -279,10 +298,9 @@
               <li><span class="row-n">02</span><span><strong>Booking + lead capture</strong><em class="offer-desc">Forms, calendar and WhatsApp connected, so every inquiry lands somewhere.</em></span></li>
               <li><span class="row-n">03</span><span><strong>App or dashboard</strong><em class="offer-desc">Internal tools, client portals and live numbers, if you need them.</em></span></li>
               <li><span class="row-n">04</span><span><strong>AI assistant + follow-up</strong><em class="offer-desc">Answers the common questions and follows up with leads in English and Spanish.</em></span></li>
-              <li><span class="row-n">05</span><span><strong>Launch + handover</strong><em class="offer-desc">Hosting set up, a short how-to video and <span data-placeholder="P14">[PLACEHOLDER: support period]</span> of fixes.</em></span></li>
+              <li><span class="row-n">05</span><span><strong>Launch + handover</strong><em class="offer-desc">Hosting set up, a short how-to video and 14 days of fixes.</em></span></li>
           </ul>
-          <p>You don't need to know tech. You approve, we build. Working demo in <span data-placeholder="P07">[PLACEHOLDER: turnaround days]</span> days.</p>
-          <p data-placeholder="P13">[PLACEHOLDER: real site/screenshot/result, hide if none]</p>
+          <p>You don't need to know tech. You approve, we build. Working demo in 5 days.</p>
           <p class="guarantee">If the working demo isn't what you asked for, you walk away and owe nothing.</p>
           <div class="free-offer glass">
             <h4>Free 15-Minute AI Audit</h4>
@@ -291,7 +309,7 @@
                 <li>Where you're losing time or leads</li>
                 <li>One or two AI fixes you can put to work this month</li>
                 <li>A ballpark for a site, app or assistant</li>
-                <li>A short written summary after the call <span data-placeholder="P15">[PLACEHOLDER: confirm]</span></li>
+                <li>A short written summary after the call</li>
             </ul>
             <p class="field-help">No pitch, and you're under no obligation.</p>
             <a class="btn btn-glass glass btn-wide" data-config="calAudit" data-placeholder="P02" href="">Pick a time for my free audit</a>
@@ -300,7 +318,6 @@
         </article>
       </div>
     </section>
-
     <section class="band" id="real-estate" data-scene="dust" aria-labelledby="spot-title">
       <div class="wrap spot">
         <div class="spot-media">
@@ -309,6 +326,10 @@
               <source srcset="/assets/work/listing-waterfront.avif" type="image/avif" />
               <img src="/assets/work/listing-waterfront.webp" alt="" width="1600" height="905" loading="lazy" decoding="async" />
             </picture>
+            <video class="card-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+              <source data-src="/assets/work/listing-waterfront.webm" type="video/webm" />
+              <source data-src="/assets/work/listing-waterfront.mp4" type="video/mp4" />
+            </video>
           </div>
           <p class="spot-cap" data-placeholder="P12">Spec listing · Brickell-style · film + 2 reels (9:16)</p>
         </div>
@@ -325,20 +346,18 @@
         </div>
       </div>
     </section>
-
     <section class="band" id="process" data-scene="brain-far" aria-labelledby="process-title">
       <div class="wrap">
         <h2 id="process-title" class="reveal-words">How it <em>works</em></h2>
         <ol class="steps">
         <li class="step glass"><span class="step-n">01</span><h3>Brief</h3><p>A 15-minute call about your goals, your customers and the look you want.</p></li>
-        <li class="step glass"><span class="step-n">02</span><h3>Create or build</h3><p>We make the first cut or a working demo in <span data-placeholder="P07">[PLACEHOLDER: turnaround days]</span> days.</p></li>
+        <li class="step glass"><span class="step-n">02</span><h3>Create or build</h3><p>We make the first cut or a working demo in 5 days.</p></li>
         <li class="step glass"><span class="step-n">03</span><h3>Revise</h3><p>Two rounds of changes are included.</p></li>
         <li class="step glass"><span class="step-n">04</span><h3>Launch</h3><p>Your content is ready to post, or your site, app or assistant is live.</p></li>
         </ol>
         <p class="section-cta"><a class="btn btn-gold" data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call</a></p>
       </div>
     </section>
-
     <section class="band" id="about" data-scene="globe" aria-labelledby="why-title">
       <div class="wrap about">
         <h2 id="why-title" class="reveal-words">Miami speaks two languages. <em>Your business should too.</em></h2>
@@ -348,11 +367,9 @@
         <li class="glass"><strong>Made to look premium</strong> Cinematic video and design that put you next to the biggest names in your market.</li>
         <li class="glass"><strong>One studio</strong> Content, website and automations from the same team, so nothing gets lost between vendors.</li>
         </ul>
-        <blockquote class="glass" data-placeholder="P11">[PLACEHOLDER: real testimonial, name, business]</blockquote>
         <p class="section-cta"><a class="btn btn-gold" data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call</a></p>
       </div>
     </section>
-
     <section class="band" id="contact" data-scene="spade" aria-labelledby="contact-title">
       <div class="wrap">
         <div class="contact-panel glass">
@@ -361,7 +378,6 @@
             <p class="lede">Book a 15-minute call, or send a message and we'll get back to you within 24 hours.</p>
             <p><a class="btn btn-gold" data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call</a></p>
             <div class="contact-meta">
-              <a data-config="whatsapp" data-placeholder="P03" href="">Message us on WhatsApp</a>
               <a data-config="email" data-placeholder="P04" href=""></a>
               <p>Miami, FL</p>
             </div>
@@ -391,7 +407,7 @@
           </label>
           <label class="span-2">Message<span class="field-help">What do you want your customers to do?</span><textarea name="message" required></textarea></label>
           <p class="form-error" role="alert" hidden></p>
-          <p class="form-send-error" role="alert" hidden>We couldn't send that. <span class="form-fallback"><a data-config="whatsapp" data-placeholder="P03" href="">Message us on WhatsApp</a><a data-config="email" data-placeholder="P04" href=""></a></span></p>
+          <p class="form-send-error" role="alert" hidden>We couldn't send that. <span class="form-fallback"><a data-config="email" data-placeholder="P04" href=""></a></span></p>
           <button class="btn btn-gold btn-wide" type="submit">Send and get my plan</button>
           <p class="form-ok" role="status" hidden>Thanks. We'll reply within 24 hours.</p>
         </form>
@@ -399,7 +415,6 @@
       </div>
     </section>
   </main>
-
   <footer class="footer" data-scene="spade-end">
     <div class="wrap footer-grid">
       <div>
@@ -427,6 +442,13 @@
     <p class="giant" aria-hidden="true">Velox<em>Lab</em></p>
     <p class="wrap legal">© 2026 VeloxLab Studio · <a href="/privacy.html">Privacy</a></p>
   </footer>
+  <dialog class="viewer" aria-label="Project viewer">
+    <div class="viewer-inner glass">
+      <video class="viewer-video" playsinline controls loop></video>
+      <p class="viewer-cap"></p>
+      <button class="viewer-close glass glass--liquid" type="button" aria-label="Close"><span aria-hidden="true"></span></button>
+    </div>
+  </dialog>
 
   <svg class="lg-defs" width="0" height="0" aria-hidden="true" focusable="false">
     <filter id="lg-refract" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
@@ -434,7 +456,6 @@
       <feDisplacementMap in="SourceGraphic" in2="map" scale="38" xChannelSelector="R" yChannelSelector="G" />
     </filter>
   </svg>
-
   <script src="/js/vendor/lenis.min.js" defer></script>
   <script src="/js/config.js" defer></script>
   <script src="/js/commitments.js" defer></script>

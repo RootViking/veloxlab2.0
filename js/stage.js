@@ -15,7 +15,7 @@
    Without WebGL2 the page keeps its CSS background. */
 
 import {
-  WebGLRenderer, Scene, PerspectiveCamera, BufferGeometry, Float32BufferAttribute, Points,
+  WebGLRenderer, Scene, PerspectiveCamera, BufferGeometry, Float32BufferAttribute, Points, LineSegments,
   ShaderMaterial, AdditiveBlending, Vector2, MathUtils
 } from "./vendor/three.bundle.js";
 
@@ -306,6 +306,56 @@ async function start() {
   const cloud = new Points(geo, mat);
   cloud.frustumCulled = false;
   scene.add(cloud);
+
+  /* ---------- synapses: short links across the brain with travelling pulses ---------- */
+
+  const synU = { uTime: U.uTime, uShow: { value: 1 } };
+  if (brain) {
+    const P = brain.pos;
+    const M = mobile ? 700 : 1800;
+    const pick = [];
+    for (let i = 0; i < M; i++) pick.push(Math.floor(r() * N));
+    const seg = [], ends = [], phase = [];
+    const maxD2 = 0.13 * 0.13, minD2 = 0.035 * 0.035;
+    for (let a = 0; a < M; a++) {
+      const ia = pick[a] * 3;
+      let best = -1, best2 = -1, d1 = Infinity, d2 = Infinity;
+      for (let b = 0; b < M; b++) {
+        if (a === b) continue;
+        const ib = pick[b] * 3;
+        const dx = P[ia] - P[ib], dy = P[ia + 1] - P[ib + 1], dz = P[ia + 2] - P[ib + 2];
+        const d = dx * dx + dy * dy + dz * dz;
+        if (d < minD2 || d > maxD2) continue;
+        if (d < d1) { d2 = d1; best2 = best; d1 = d; best = b; } else if (d < d2) { d2 = d; best2 = b; }
+      }
+      [best, best2].forEach((b, k) => {
+        if (b < 0 || (k === 1 && r() < 0.5)) return;
+        const ib = pick[b] * 3, ph = r();
+        seg.push(P[ia], P[ia + 1], P[ia + 2], P[ib], P[ib + 1], P[ib + 2]);
+        ends.push(0, 1); phase.push(ph, ph);
+      });
+    }
+    const lg = new BufferGeometry();
+    lg.setAttribute("position", new Float32BufferAttribute(seg, 3));
+    lg.setAttribute("aEnd", new Float32BufferAttribute(ends, 1));
+    lg.setAttribute("aPhase", new Float32BufferAttribute(phase, 1));
+    const lines = new LineSegments(lg, new ShaderMaterial({
+      transparent: true, depthWrite: false, depthTest: false, blending: AdditiveBlending, uniforms: synU,
+      vertexShader: `
+        attribute float aEnd, aPhase; varying float vEnd, vPhase;
+        void main(){ vEnd = aEnd; vPhase = aPhase; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+      fragmentShader: `
+        uniform float uTime, uShow; varying float vEnd, vPhase;
+        void main(){
+          float head = fract(uTime * (0.18 + vPhase * 0.22) + vPhase * 7.0) * 1.6 - 0.3;
+          float pulse = exp(-pow((vEnd - head) * 7.0, 2.0));
+          float a = (0.07 + pulse * 0.85) * uShow;
+          gl_FragColor = vec4(vec3(1.0, 0.72, 0.36) * a, a);
+        }`
+    }));
+    lines.frustumCulled = false;
+    cloud.add(lines);
+  }
   progress(0.9);
 
   /* ---------- scroll stations from data-scene ---------- */
@@ -405,6 +455,9 @@ async function start() {
     U.uChaos.value = Math.min(Math.abs(vel) * 0.08, 1.5);
     // phones stack text over the centred shape: dim it once past the hero so words stay legible
     U.uAlpha.value = cur.a * (mobile && y > innerHeight * 0.6 ? 0.42 : 1);
+    // synapses belong to the brain: they fade out as it pours into another shape
+    const bw = (U.uFrom.value === 0 ? 1 - U.uMix.value : 0) + (U.uTo.value === 0 && U.uFrom.value !== 0 ? U.uMix.value : 0);
+    synU.uShow.value = Math.pow(MathUtils.clamp(bw, 0, 1), 3) * U.uAlpha.value;
     U.uMouse.value.copy(mouseS);
     renderer.render(scene, camera);
   }

@@ -4,6 +4,8 @@
   document.querySelectorAll("[data-config]").forEach(function (el) {
     var path = el.getAttribute("data-config").split(".");
     var value = path.reduce(function (obj, key) { return obj && obj[key]; }, config);
+    // a link still waiting on its real URL stays out of sight instead of going nowhere
+    if (el.tagName === "A" && (!value || /PLACEHOLDER/.test(value))) { el.hidden = true; return; }
     if (!value) return;
     if (el.getAttribute("data-config") === "email") {
       el.textContent = value;
@@ -472,4 +474,92 @@
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
+})();
+
+/* Motion work: card loops and the showreel load only as they approach the
+   screen and play only while visible. Cards and the reel open in a glass
+   case-study viewer. Reduced motion keeps the stills and skips autoplay. */
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
+
+  function load(video) {
+    if (video.dataset.loaded) return;
+    video.dataset.loaded = "1";
+    Array.prototype.forEach.call(video.querySelectorAll("source[data-src]"), function (s) { s.src = s.getAttribute("data-src"); });
+    video.load();
+  }
+  function play(video) {
+    load(video);
+    var p = video.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  var vids = Array.prototype.slice.call(document.querySelectorAll(".card-video, .reel-video"));
+  if (!reduce && !saveData && "IntersectionObserver" in window) {
+    var near = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) load(en.target); });
+    }, { rootMargin: "600px 600px" });
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) play(v); else v.pause();
+      });
+    }, { threshold: 0.35 });
+    vids.forEach(function (v) {
+      v.addEventListener("playing", function () { v.classList.add("is-playing"); });
+      near.observe(v);
+      seen.observe(v);
+    });
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) vids.forEach(function (v) { v.pause(); });
+    });
+  }
+
+  /* Viewer */
+  var dlg = document.querySelector(".viewer");
+  if (!dlg || typeof dlg.showModal !== "function") return;
+  var vv = dlg.querySelector(".viewer-video");
+  var cap = dlg.querySelector(".viewer-cap");
+  var closeBtn = dlg.querySelector(".viewer-close");
+  var opener = null;
+
+  function open(btn) {
+    var base = btn.getAttribute("data-video");
+    opener = btn;
+    vv.innerHTML = '<source src="' + base + '.webm" type="video/webm" /><source src="' + base + '.mp4" type="video/mp4" />';
+    // size the frame to the clip so portrait work never sits in a letterbox
+    fit(/\/reel$/.test(base) ? 16 / 9 : 848 / 1072);
+    vv.load();
+    cap.textContent = btn.getAttribute("data-caption") || "";
+    dlg.showModal();
+    if (window.__lenis) window.__lenis.stop();
+    var p = vv.play();
+    if (p && p.catch) p.catch(function () {});
+    closeBtn.focus();
+  }
+  function fit(ar) {
+    vv._ar = ar;
+    var maxW = window.innerWidth * 0.94 - 20, maxH = window.innerHeight * 0.92 - 90;
+    var w = Math.min(maxW, maxH * ar);
+    vv.style.width = Math.round(w) + "px";
+    vv.style.height = Math.round(w / ar) + "px";
+  }
+  vv.addEventListener("loadedmetadata", function () { if (vv.videoWidth) fit(vv.videoWidth / vv.videoHeight); });
+  window.addEventListener("resize", function () { if (dlg.open && vv._ar) fit(vv._ar); }, { passive: true });
+  function close() { if (dlg.open) dlg.close(); }
+
+  dlg.addEventListener("close", function () {
+    vv.pause();
+    vv.removeAttribute("src");
+    vv.innerHTML = "";
+    if (window.__lenis) window.__lenis.start();
+    if (opener) opener.focus({ preventScroll: true });
+  });
+  closeBtn.addEventListener("click", close);
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) close(); });
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest(".card-open, .reel-open");
+    if (btn) { e.preventDefault(); open(btn); }
+  });
 })();

@@ -66,3 +66,32 @@ Total spent for the robot direction: 58.25 credits.
 Encoded to WebP (q78) and AVIF (q55), 1100px wide (listing 1600px).
 
 Redesign spend: 34 credits.
+
+## Upgrade: motion clips from the spec stills (2026-11-13)
+
+`grok_video_v15_lite`, 5 s, 720p, start image = the matching still job above (5 credits each, 35 total). Each prompt asked for a slow cinematic move and subtle natural motion, with no cuts, text or sound.
+
+| File (`assets/work/`) | Job | Motion |
+| --- | --- | --- |
+| `cafe-brand-film` | `9fb92328-ce48-4c0e-bfc9-411161dbdf1f` | push-in, latte art blooms, steam rises |
+| `boutique-landing` | `3d05c15e-eaa7-4205-b3c0-a12ae569837b` | sideways dolly past the laptop |
+| `clinic-booking` | `4c031f10-f288-4afd-815e-f5bb2d9d7161` | push-in, check mark glows |
+| `listing-film` | `88c83221-8050-4584-8c23-5ed084d3dc97` | glide toward the windows at blue hour |
+| `food-reel` | `66377eac-1d7e-48a9-86e4-bdec623ff319` | torch flame, sparks and smoke |
+| `retail-website` | `bd937620-a3f0-4960-b306-0a80ca7127bd` | slow arc around the phone |
+| `listing-waterfront` | `07960f68-f00d-44db-a0c1-d2ff2434452b` | drift toward the pool and bay |
+
+- **Card loops:** each clip is trimmed so its last 0.6 s crossfades into its start, then encoded to H.264 MP4 (CRF 27) and VP9 WebM (CRF 40) with the audio removed.
+- **Showreel:** `reel.mp4` / `reel.webm` is 15 s of 2.6 s middle slices, center-cropped to 16:9 at 1280×720 and joined with 0.5 s crossfades. The order is waterfront, café, food, penthouse, boutique, clinic, retail. `reel-poster.jpg` is its frame at 1.2 s.
+
+Upgrade spend: 35 credits. Running total for the redesign: 69 of 100.
+
+## Share image (2026-11-13)
+
+`assets/og.jpg` (1200×630) is rendered from the live hero. To regenerate it while the local server runs:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --use-angle=metal --hide-scrollbars --force-device-scale-factor=2 --window-size=1200,630 --virtual-time-budget=5000 --screenshot=og.png "http://localhost:5173/?og"
+```
+
+Then scale `og.png` to 1200×630 JPEG.
