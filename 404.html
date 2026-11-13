@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Page not found | VeloxLab Studio</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#060606" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .nf { min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 96px 20px; }
+    .nf-inner { display: grid; gap: 22px; justify-items: center; }
+    .nf .nf-code { font-family: var(--serif); font-style: italic; font-size: clamp(120px, 24vw, 280px); line-height: 0.8; color: var(--gold-soft); letter-spacing: -0.02em; }
+    .nf h1 { font-size: clamp(28px, 3.4vw, 44px); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; }
+    .nf p { color: var(--ink-2); max-width: 40ch; }
+    .nf-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; }
+    .nf-logo { position: fixed; top: 22px; left: var(--margin); }
+  </style>
+</head>
+<body>
+  <a class="nf-logo logo" href="/"><img src="/assets/logo/veloxlab-primary.svg" alt="VeloxLab" width="158" height="22" /></a>
+  <main class="nf">
+    <div class="nf-inner">
+      <p class="nf-code" aria-hidden="true">404</p>
+      <h1>This page isn't here.</h1>
+      <p>The link may be old or mistyped. <span lang="es">Esta página no existe.</span></p>
+      <p class="nf-links">
+        <a class="btn btn-gold" href="/">Back to VeloxLab</a>
+        <a class="btn btn-glass glass" href="/es/" hreflang="es" lang="es">Ir al sitio en español</a>
+      </p>
+    </div>
+  </main>
+</body>
+</html>

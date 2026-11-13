@@ -1,0 +1,13 @@
+# Netlify rules. The site deploys the repository root, so project files would
+# otherwise be public. "404!" forces a not-found even though the file exists.
+
+/README.md       /404.html  404!
+/readme.md       /404.html  404!
+/package.json    /404.html  404!
+/_redirects      /404.html  404!
+/.gitignore      /404.html  404!
+/.claude/*       /404.html  404!
+/design/*        /404.html  404!
+/docs/*          /404.html  404!
+/prompts/*       /404.html  404!
+/scripts/*       /404.html  404!

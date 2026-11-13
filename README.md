@@ -128,4 +128,9 @@ There is no separate web root yet, because hosting is not chosen and the local s
 
 ## Hosting
 
-Hosting is not chosen. Do not add deploy config. Recommended headers and cache policy are in `docs/security-headers.md`.
+- **Where:** live at **https://veloxlab.studio** on Netlify (project `veloxlab-studio`, team `sadiel0`).
+- **Builds:** Netlify builds the `3d-hero-dissolve` branch of `RootViking/veloxlab2.0` and publishes the repository root as-is. There is no build step.
+- **Auto Publishing is locked:** every push builds, but nothing goes live until someone opens **Deploys**, picks the build and clicks **Publish deploy**. To publish pushes automatically, use "Unlock to start auto publishing" on the Deploys page.
+- **`_redirects`:** forces a 404 for internal paths that would otherwise be public, because the whole repository is deployed (`README.md`, `package.json`, `.claude/`, `design/`, `docs/`, `prompts/`, `scripts/`). Add any new internal folder there.
+- **`404.html`:** the branded not-found page, served by Netlify for missing paths and for the blocked ones.
+- **Headers and cache:** the recommended headers and cache policy are in `docs/security-headers.md`. They are not applied yet.
