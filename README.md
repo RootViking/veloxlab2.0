@@ -29,6 +29,8 @@ Both pages share one layout. Only the words differ.
 - Proof, testimonial and work-subline slots stay out of the page until real, as `design/copy-v3.md` says.
 - WhatsApp links are replaced by the email link.
 - Any `data-config` link whose value in `js/config.js` still contains `PLACEHOLDER` hides itself, which currently covers the social profiles.
+- **Commitment switches** in `js/config.js`: `showGuarantees` (the "you don't pay" guarantee line) and `showLimitedSpots` (the limited-spots line). Both are `false`, so the lines are hidden on veloxlab.studio. Preview hosts and localhost show them for review, and `?preview=1` / `?preview=0` force them on or off.
+- **Positioning (Nov 16):** VeloxLab is creative-only (AI ads, brand films, social cuts, UGC-style content and motion graphics) for Miami and Hialeah businesses. The development offer was removed. The real estate section is turned off with `hidden` but kept in the markup.
 
 ## Particle stage
 

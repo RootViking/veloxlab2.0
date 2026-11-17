@@ -374,7 +374,7 @@ async function start() {
   let stations = [];
   function measure() {
     const sy = scrollY;
-    stations = Array.from(document.querySelectorAll("[data-scene]")).map((el) => {
+    stations = Array.from(document.querySelectorAll("[data-scene]")).filter((el) => !el.closest("[hidden]")).map((el) => {
       const rect = el.getBoundingClientRect();
       return { pose: POSE[el.dataset.scene] || POSE.dust, at: Math.max(0, rect.top + sy - innerHeight * 0.45) };
     }).sort((a, b) => a.at - b.at);

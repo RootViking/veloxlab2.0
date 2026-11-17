@@ -24,6 +24,13 @@
   })) {
     document.querySelectorAll("[data-preview-only]").forEach(function (el) { el.hidden = false; });
   }
+  if (commitments && commitments.guaranteesVisible && commitments.guaranteesVisible({
+    showGuarantees: config.showGuarantees,
+    preview: new URLSearchParams(window.location.search).get("preview"),
+    hostname: window.location.hostname
+  })) {
+    document.querySelectorAll("[data-guarantee]").forEach(function (el) { el.hidden = false; });
+  }
 
   var nav = document.querySelector(".nav");
   var toggle = document.querySelector(".nav-toggle");
@@ -422,7 +429,7 @@
       var t = document.querySelector(url.hash);
       if (!t) return;
       e.preventDefault();
-      lenis.scrollTo(url.hash === "#top" ? 0 : t, { offset: -24, duration: 1.6, easing: function (x) { return x === 1 ? 1 : 1 - Math.pow(2, -10 * x); } });
+      lenis.scrollTo(url.hash === "#top" ? 0 : t, { offset: t.matches("section") ? -24 : -110, duration: 1.6, easing: function (x) { return x === 1 ? 1 : 1 - Math.pow(2, -10 * x); } });
       if (history.pushState) history.pushState(null, "", url.hash);
     });
   }

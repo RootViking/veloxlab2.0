@@ -359,7 +359,7 @@ html:not(.js) .loader { display: none; }
   .dock-links { display: none; }
   .nav-toggle { display: inline-flex; align-items: center; }
   .topbar .lang { display: none; }
-  .dock { left: 16px; right: 16px; transform: none; justify-content: space-between; }
+  .dock { left: 16px; right: 16px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); transform: none; justify-content: space-between; }
   .js .dock { transform: translateY(160%); }
   .js.is-loaded .dock { transform: none; }
   .dock-cta { flex: 1; margin-left: 4px; }
@@ -836,3 +836,23 @@ html:not(.js) .loader { display: none; }
 /* ?og: a still of the hero for the social preview image */
 .og-shot *, .og-shot *::before, .og-shot *::after { transition: none !important; animation: none !important; }
 .og-shot .loader, .og-shot .dock, .og-shot .scroll-hint, .og-shot .lang-suggest, .og-shot .topbar-end, .og-shot .hero-ctas { display: none !important; }
+
+
+/* ==========================================================================
+   Creative-only layout (Nov 2026)
+   ========================================================================== */
+
+/* One offer: a single, centred track */
+.tracks--single { grid-template-columns: minmax(0, 860px); justify-content: center; }
+.tracks--single .offer-rows { columns: 1; }
+
+/* The hero button lands on the free spec ad below the sticky top bar */
+#spec-ad { scroll-margin-top: 110px; }
+
+/* Netlify injects its "Powered by Netlify" badge (iframe#nl-badge-frame) on the
+   live site, fixed to the bottom-right corner. On phones that corner belongs to
+   the dock, and lifting the badge above it puts it over the content, so phones
+   hide it. Desktop keeps it: the dock is centred there and nothing overlaps. */
+@media (max-width: 899px) {
+  #nl-badge-frame { display: none !important; }
+}
