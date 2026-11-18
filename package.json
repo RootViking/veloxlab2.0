@@ -2,6 +2,6 @@
   "private": true,
   "scripts": {
     "check:placeholders": "node scripts/check-placeholders.mjs",
-    "test": "node --test scripts/form-submit.test.mjs scripts/commitments.test.mjs"
+    "test": "node --test scripts/form-submit.test.mjs scripts/commitments.test.mjs scripts/attribution.test.mjs scripts/ad-card.test.mjs"
   }
 }
