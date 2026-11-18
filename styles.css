@@ -1333,6 +1333,19 @@ main, .footer { position: relative; z-index: 1; }
    the v2 spec; typography maps Unbounded/Manrope to the site's fonts.
    ========================================================================== */
 
+/* Rebase onto Molten Ace (e293f3a): the PR #8 rules below were written
+   against the gold system. Map its four missing tokens to Molten Ace values
+   so nothing falls back to the browser default. The homepage loader belonged
+   to the gold particle stage, which Molten Ace does not have, so it is hidden.
+   Claude Code replaces this with the --ma-* alias block from spec §V3.0. */
+:root {
+  --gold: var(--amber);
+  --gold-soft: var(--amber-hi);
+  --serif: var(--font-display);
+  --fs-lead: clamp(18px, 1.35vw, 21px);
+}
+.loader { display: none; }
+
 /* ----- /cita header and mobile book bar ----- */
 
 body.page-cita { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
