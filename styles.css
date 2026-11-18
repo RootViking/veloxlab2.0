@@ -1474,3 +1474,294 @@ body.page-cita { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); 
 
 .ad-tabs-head--center { text-align: center; }
 .ad-tabs-head--center .lede { margin-inline: auto; }
+
+/* ==========================================================================
+   Design polish (Nov 17): /cita and the homepage offer bands.
+   Visual only: no copy, links or switches change here. /cita stays 3D-free.
+   ========================================================================== */
+
+/* ----- /cita hero: the kicker becomes the second display line ----- */
+
+.cita-hero-frame {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 70% at 85% 20%, rgba(255, 160, 60, 0.10), transparent 70%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008) 45%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 40px 120px -60px rgba(0, 0, 0, 0.9);
+}
+.cita-hero-title { letter-spacing: -0.05em; }
+.cita-hero-title .cita-kicker {
+  margin-top: 18px;
+  max-width: 22ch;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(24px, 2.6vw, 38px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--gold-soft);
+}
+.cita-hero-sub { margin-top: 28px; }
+.cita-hero-ctas { margin-top: 32px; }
+.cita-hero-ctas .btn { min-height: 56px; padding: 0 30px; }
+.cita-hero-micro {
+  position: relative;
+  padding-left: 18px;
+  margin-top: 16px;
+}
+.cita-hero-micro::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+}
+.cita-hero .ad-card.is-hero .ad-media { box-shadow: 0 40px 100px -40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.06); }
+.cita-hero .ad-card figcaption { text-align: center; font-weight: 500; font-size: 13px; }
+
+/* ----- Problem / solution: a readable two-column comparison ----- */
+
+.ps-head h2 { max-width: 16ch; }
+.ps-rows li::before {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: 1;
+}
+.ps-problem, .ps-solution { font-size: 17px; line-height: 1.5; }
+.ps-problem { color: var(--ink-2); }
+
+@media (min-width: 900px) {
+  .ps .wrap { max-width: 1120px; }
+  .ps-cols {
+    grid-template-columns: 72px 1fr 64px 1fr;
+    gap: 0;
+    margin-bottom: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+  }
+  .ps-cols span:first-child { grid-column: 2; }
+  .ps-cols span:last-child { grid-column: 4; color: var(--gold-soft); }
+  .ps-rows li {
+    grid-template-columns: 72px 1fr 64px 1fr;
+    gap: 0;
+    padding: 34px 0;
+    align-items: baseline;
+  }
+  .ps-rows li::before { font-size: 30px; }
+  .ps-problem, .ps-solution { font-size: 19px; max-width: 34ch; }
+  .ps-rule {
+    display: block;
+    width: 32px;
+    align-self: center;
+    background: linear-gradient(90deg, rgba(255, 181, 71, 0.2), var(--gold));
+  }
+  .ps-solution { position: relative; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ps-rows li { transition: background-color 500ms var(--ease); }
+  .ps-rows li:hover { background: linear-gradient(90deg, transparent, rgba(255, 181, 71, 0.035) 40%, transparent); }
+  .ps-rows li:hover .ps-problem { color: var(--ink); }
+}
+
+/* ----- Sample tabs ----- */
+
+.ad-tab { transition: color 300ms var(--ease), background-color 300ms var(--ease); }
+.ad-thumb { transition: border-color 300ms var(--ease), box-shadow 300ms var(--ease); }
+.ad-tab[aria-selected="true"] .ad-thumb { box-shadow: 0 0 0 3px rgba(255, 181, 71, 0.18); }
+
+/* phones and tablets: three compact tabs that always fit, label under thumb */
+@media (max-width: 1023px) {
+  .ad-tablist { justify-content: center; overflow: visible; gap: 14px; }
+  .ad-tab {
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-height: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .ad-thumb { width: 64px; height: 114px; }
+  .ad-tab-label { font-size: 13px; }
+}
+
+@media (min-width: 1024px) {
+  .ad-tabs--split .ad-tab {
+    min-height: 0;
+    padding: 14px 16px 14px 14px;
+    gap: 18px;
+    position: relative;
+  }
+  .ad-tabs--split .ad-tab::after {
+    content: "";
+    position: absolute;
+    left: 0; top: 14px; bottom: 14px;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--gold);
+    transform: scaleY(0);
+    transition: transform 500ms var(--ease);
+  }
+  .ad-tabs--split .ad-tab[aria-selected="true"] { background: linear-gradient(90deg, rgba(255, 181, 71, 0.06), transparent 70%); }
+  .ad-tabs--split .ad-tab[aria-selected="true"]::after { transform: scaleY(1); }
+  .ad-tabs--split .ad-thumb { width: 72px; height: 128px; margin-left: 10px; }
+  .ad-tabs--split .ad-tab-label { font-size: 20px; font-weight: 500; letter-spacing: -0.02em; }
+  .ad-tabs--center .ad-tab-label { font-size: 15px; }
+}
+
+/* ----- Offer stack ----- */
+
+.offer-lockup {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(30px, 3.2vw, 44px);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--gold-soft);
+  margin-bottom: 18px;
+}
+#offer-title {
+  font-size: clamp(34px, 4.4vw, 64px);
+  max-width: 20ch;
+}
+.offer-intro { margin: 20px 0 48px; }
+.offer-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-3);
+}
+.offer-block .offer-rows li { padding: 20px 0; }
+.offer-block .offer-desc { max-width: 60ch; line-height: 1.55; }
+.offer-block .offer-rows strong { font-size: 18px; }
+
+.bonus-card {
+  position: relative;
+  isolation: isolate;
+  padding: 28px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012) 50%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 600ms var(--ease), border-color 400ms var(--ease);
+}
+.bonus-icon {
+  box-sizing: content-box;
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(255, 181, 71, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 181, 71, 0.25);
+  margin-bottom: 18px;
+}
+.bonus-card h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+@media (hover: hover) and (pointer: fine) {
+  .bonus-card:hover { transform: translateY(-3px); border-color: rgba(255, 181, 71, 0.35); }
+}
+.offer-block .section-cta .btn,
+.cta-panel .btn { padding: 0 30px; }
+
+/* ----- CTA panel: a touch more presence ----- */
+
+.cta-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(70% 90% at 0% 0%, rgba(255, 160, 60, 0.09), transparent 60%),
+    rgba(255, 255, 255, 0.025);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.cta-group h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: var(--gold-soft);
+}
+.cta-group ul { list-style: none; padding: 0; }
+.cta-group li { position: relative; padding-left: 22px; }
+.cta-group li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ----- FAQ: heading beside the list on wide screens ----- */
+
+.cita-faq summary { font-weight: 500; transition: color 300ms var(--ease); }
+.cita-faq details { padding: 20px 0; }
+.cita-faq details[open] summary { color: var(--gold-soft); }
+.cita-faq details[open] p { animation: faq-in 500ms var(--ease) both; }
+@keyframes faq-in { from { opacity: 0; transform: translateY(-4px); } }
+@media (hover: hover) and (pointer: fine) {
+  .cita-faq summary:hover { color: var(--gold-soft); }
+}
+@media (min-width: 1024px) {
+  .cita-faq .wrap {
+    max-width: var(--max);
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    column-gap: 64px;
+    align-items: start;
+  }
+  .cita-faq h2 { grid-column: 1; grid-row: 1 / span 20; position: sticky; top: 112px; margin: 0; }
+  .cita-faq details { grid-column: 2; }
+}
+
+/* ----- /cita footer ----- */
+
+.cita-footer { padding-top: 40px; }
+
+/* ----- Homepage offer bands: a solid surface so particles never cross text ----- */
+
+.offer-teaser,
+.custom-card {
+  position: relative;
+  isolation: isolate;
+  background-color: rgba(10, 9, 8, 0.82);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+.offer-teaser h2 { letter-spacing: -0.05em; }
+.custom-card h3 { font-weight: 600; letter-spacing: -0.02em; }
+.spec-band .form input,
+.spec-band .form select,
+.spec-band .form textarea { background-color: rgba(10, 9, 8, 0.7); }
+
+/* ----- Scroll entrances (CSS only, where the browser supports view timelines) ----- */
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .ps-rows li,
+    .offer-block .offer-rows li,
+    .bonus-card,
+    .cta-panel,
+    .cita-faq details,
+    .offer-teaser,
+    .custom-card {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
