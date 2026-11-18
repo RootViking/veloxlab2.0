@@ -63,18 +63,17 @@ That runs `node scripts/check-placeholders.mjs`. It exits with an error if `inde
 
 ### Guarantee and limited spots (P16, P17)
 
-Sadiel confirmed the guarantee lines, so they are visible on every host, including production. Those sentences have no placeholder.
+Both kinds of line are switch-gated in `js/config.js`, and `js/commitments.js` decides visibility:
 
-The limited-spots lines stay preview-only. The client and build counts inside them are still `[PLACEHOLDER: number]` (P17), so the launch check keeps failing until those numbers are filled in.
+- `showGuarantees` covers the guarantee lines and the FAQ item that restates the agent guarantee (`data-preview-only="guarantee"`). It is `true` (Sadiel, Nov 18, 2026), so they show on veloxlab.studio.
+- `showLimitedSpots` covers the limited-spots / client-cap lines (`data-preview-only="spots"`). It is `false`, so they stay hidden on veloxlab.studio.
 
-`showLimitedSpots` in `js/config.js` is the production switch for those lines only. It is `false`. Set that one line to `true` to show them on veloxlab.studio.
-
-While the switch is off, `js/commitments.js` reveals the limited-spots lines (`data-preview-only`) only when:
+A line whose switch is off still shows when:
 
 - the URL has `?preview=1`, or
-- `preview` is not `0` and the hostname is not `veloxlab.studio` or `www.veloxlab.studio`.
+- `preview` is not `0` and the hostname is not `veloxlab.studio` or `www.veloxlab.studio` (deploy previews, localhost).
 
-`?preview=0` hides the limited-spots lines on every host, including localhost. On `veloxlab.studio` they stay hidden unless the switch is `true` or the URL has `?preview=1`. The guarantee lines are not affected.
+`?preview=0` hides both kinds of line on every host, including production. `node --test scripts/commitments.test.mjs` covers these rules.
 
 ## Contact
 

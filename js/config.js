@@ -4,7 +4,8 @@
    showLimitedSpots is the production switch for the limited-spots lines.
    showGuarantees is the production switch for the guarantee lines
    (and the FAQ item that restates the agent guarantee).
-   Both are off on veloxlab.studio until set to true. */
+   On veloxlab.studio a line shows only when its switch is true.
+   Guarantees are on (Sadiel, Nov 18, 2026); the cap stays off. */
 window.VELOX_CONFIG = {
   calIntro: "https://calendly.com/sadielalmanza/15min",
   whatsapp: "https://wa.me/PLACEHOLDER",
@@ -17,5 +18,5 @@ window.VELOX_CONFIG = {
   },
   formEndpoint: "https://formsubmit.co/ajax/sadielalmanza@outlook.com",
   showLimitedSpots: false,
-  showGuarantees: false
+  showGuarantees: true
 };
