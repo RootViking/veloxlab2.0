@@ -1,3 +1,7 @@
+# Trailing slashes for the offer landing pages.
+/cita    /cita/     301
+/es/cita /es/cita/  301
+
 # Netlify rules. The site deploys the repository root, so project files would
 # otherwise be public. "404!" forces a not-found even though the file exists.
 
