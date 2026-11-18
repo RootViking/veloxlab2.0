@@ -3,37 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>VeloxLab Studio | Video, Websites &amp; AI for Miami Businesses</title>
-  <meta name="description" content="Miami creative and development studio. Brand videos, websites and AI follow-up in English and Spanish. Get a free spec ad or a 15-min AI audit." />
+  <title>VeloxLab Studio | Instagram into booked appointments, EN/ES</title>
+  <meta name="description" content="We help Hialeah and Doral beauty salons and med spas turn Instagram into booked appointments in English and Spanish, using AI-made ads and a DM agent." />
   <link rel="canonical" href="https://veloxlab.studio/" />
-  <meta name="theme-color" content="#0E0E10" />
+  <meta name="theme-color" content="#060606" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="VeloxLab Studio" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://veloxlab.studio/" />
-  <meta property="og:title" content="VeloxLab Studio | Video, Websites &amp; AI for Miami Businesses" />
-  <meta property="og:description" content="Miami creative and development studio. Brand videos, websites and AI follow-up in English and Spanish. Get a free spec ad or a 15-min AI audit." />
+  <meta property="og:title" content="VeloxLab Studio | Instagram into booked appointments, EN/ES" />
+  <meta property="og:description" content="We help Hialeah and Doral beauty salons and med spas turn Instagram into booked appointments in English and Spanish, using AI-made ads and a DM agent." />
   <meta property="og:image" content="https://veloxlab.studio/assets/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="VeloxLab" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VeloxLab Studio | Video, Websites &amp; AI for Miami Businesses" />
-  <meta name="twitter:description" content="Miami creative and development studio. Brand videos, websites and AI follow-up in English and Spanish. Get a free spec ad or a 15-min AI audit." />
+  <meta name="twitter:title" content="VeloxLab Studio | Instagram into booked appointments, EN/ES" />
+  <meta name="twitter:description" content="We help Hialeah and Doral beauty salons and med spas turn Instagram into booked appointments in English and Spanish, using AI-made ads and a DM agent." />
   <meta name="twitter:image" content="https://veloxlab.studio/assets/og.jpg" />
-
   <link rel="alternate" hreflang="en" href="https://veloxlab.studio/" />
   <link rel="alternate" hreflang="es" href="https://veloxlab.studio/es/" />
   <link rel="alternate" hreflang="x-default" href="https://veloxlab.studio/" />
-
-  <link rel="preload" href="/assets/fonts/Yq6W-LOTXCb04q32xlpwu8Zf.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/assets/fonts/xn7gYHE41ni1AdIRggexSg.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/fonts/fonts.css" />
   <link rel="stylesheet" href="/styles.css" />
   <script src="/js/boot.js"></script>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,7 +40,7 @@
         "name": "VeloxLab Studio",
         "url": "https://veloxlab.studio/",
         "logo": "https://veloxlab.studio/assets/logo/veloxlab-primary.svg",
-        "description": "Miami creative and development studio. Brand videos, websites and AI follow-up in English and Spanish. Get a free spec ad or a 15-min AI audit.",
+        "description": "Miami studio helping beauty salons and med spas in Hialeah, Doral and Miami turn Instagram into booked appointments, in English and Spanish.",
         "knowsLanguage": ["en", "es"]
       },
       {
@@ -53,9 +49,9 @@
         "name": "VeloxLab Studio",
         "url": "https://veloxlab.studio/",
         "image": "https://veloxlab.studio/assets/og.jpg",
-        "description": "Miami creative and development studio. Brand videos, websites and AI follow-up in English and Spanish. Get a free spec ad or a 15-min AI audit.",
+        "description": "Miami studio helping beauty salons and med spas in Hialeah, Doral and Miami turn Instagram into booked appointments, in English and Spanish.",
         "knowsLanguage": ["en", "es"],
-        "areaServed": { "@type": "City", "name": "Miami" },
+        "areaServed": [{ "@type": "City", "name": "Miami" }, { "@type": "City", "name": "Hialeah" }, { "@type": "City", "name": "Doral" }],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Miami",
@@ -69,267 +65,146 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-
-  <div class="lang-suggest" data-lang-suggest hidden>
+  <div class="loader" aria-hidden="true">
+    <div class="loader-mark">
+      <img src="/assets/logo/veloxlab-primary.svg" alt="" width="158" height="22" />
+      <span class="loader-count">0</span>
+    </div>
+    <span class="loader-line"><i></i></span>
+    <span class="loader-label">Loading</span>
+  </div>
+  <div class="lang-suggest glass" data-lang-suggest hidden>
     <p>This page is in English. <a href="/es/">Ver en español</a></p>
     <button type="button" data-lang-dismiss>Dismiss</button>
   </div>
-
-  <header class="nav" id="top">
+  <header class="nav topbar" id="top">
     <a class="logo" href="/">
       <img src="/assets/logo/veloxlab-primary.svg" alt="VeloxLab" width="158" height="22" />
     </a>
-    <nav class="nav-pill" aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#real-estate">Real estate</a>
-      <a href="#process">Process</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="nav-end">
-      <div class="lang" role="group" aria-label="Language">
+    <div class="topbar-end">
+      <div class="lang glass" role="group" aria-label="Language">
         <a href="/" hreflang="en" lang="en" aria-current="page">EN</a>
         <a href="/es/" hreflang="es" lang="es">ES</a>
       </div>
-      <a class="btn btn-primary" data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call <span aria-hidden="true">→</span></a>
+      <button class="nav-toggle glass" type="button" aria-expanded="false" aria-controls="nav-sheet">Menu</button>
     </div>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-sheet">Menu</button>
   </header>
-
+  <nav class="dock glass glass--liquid" aria-label="Main">
+    <a class="dock-mark" href="#top" aria-label="VeloxLab"><img src="/assets/logo/veloxlab-icon.svg" alt="" width="22" height="22" /></a>
+    <span class="dock-links">
+      <a href="#samples">Samples</a>
+      <a href="/cita/">De Reel a Cita</a>
+      <a href="#custom">Custom builds</a>
+      <a href="#contact">Contact</a>
+    </span>
+    <a class="btn btn-gold dock-cta" data-config="calIntro" data-cta="primary" data-placeholder="P01" href="">Book a 15-min call</a>
+  </nav>
   <div class="nav-sheet" id="nav-sheet" hidden>
     <nav aria-label="Mobile">
-      <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#real-estate">Real estate</a>
-      <a href="#process">Process</a>
+      <a href="#samples">Samples</a>
+      <a href="/cita/">De Reel a Cita</a>
+      <a href="#custom">Custom builds</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="lang" role="group" aria-label="Language">
-      <a href="/" hreflang="en" lang="en" aria-current="page">EN</a>
-      <a href="/es/" hreflang="es" lang="es">ES</a>
-    </div>
+    <div class="lang glass" role="group" aria-label="Language">
+        <a href="/" hreflang="en" lang="en" aria-current="page">EN</a>
+        <a href="/es/" hreflang="es" lang="es">ES</a>
+      </div>
   </div>
-  <a class="book-bar" data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call <span aria-hidden="true">→</span></a>
-
   <main id="main" tabindex="-1">
-    <div class="hero-frame">
-      <section class="hero-screen" aria-labelledby="hero-title">
-        <div class="hero-media">
-          <picture>
-            <source srcset="/assets/hero/poster.avif" type="image/avif" />
-            <img class="hero-still" src="/assets/hero/poster.webp" alt="" width="1280" height="720" decoding="async" fetchpriority="high" />
-          </picture>
-          <div class="hero-scrim"></div>
-        </div>
-
-        <div class="hero-copy">
-          <p class="kw kw-create"><span class="shift" data-depth="-10">Create</span></p>
-          <p class="hero-sub">Content that gets you noticed. A site that gets you booked. Both languages, one studio.</p>
-        </div>
-        <p class="kw kw-build"><span class="shift" data-depth="14">Build</span></p>
-        <p class="kw kw-grow"><span class="shift" data-depth="-8">Grow</span></p>
-        <h1 class="hero-h1" id="hero-title">Creative and development for your business, in Miami.</h1>
-        <a class="btn btn-outline play-reel" href="#reel">Play the reel</a>
-      </section>
-    </div>
-
-    <div class="ticker">
-      <div class="ticker-track" aria-hidden="true">
-        <span>Brand identity</span><span>AI ad production</span><span>UGC</span><span>Brand films</span><span>Motion graphics</span><span>Websites</span><span>Apps &amp; dashboards</span><span>AI agents</span><span>Automations</span>
-        <span>Brand identity</span><span>AI ad production</span><span>UGC</span><span>Brand films</span><span>Motion graphics</span><span>Websites</span><span>Apps &amp; dashboards</span><span>AI agents</span><span>Automations</span>
+    <section class="hero" id="hero" data-scene="brain" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <p class="chip glass">Hialeah · Doral · Miami · English &amp; Español</p>
+        <p class="display" aria-hidden="true"><span class="d-line"><span class="d-in">Create. Build.</span></span><span class="d-line"><span class="d-in"><em>Grow.</em></span></span></p>
+        <h1 class="hero-title" id="hero-title">Turn Instagram into booked appointments.</h1>
+        <p class="hero-sub">We help Hialeah, Doral and Miami beauty salons and med spas turn Instagram into booked appointments in English and Spanish, using AI-made ads, a bilingual DM booking agent, and a booking page when they need one.</p>
+        <p class="hero-ctas">
+          <a class="btn btn-gold" data-config="calIntro" data-cta="primary" data-placeholder="P01" href="">Book a 15-min call</a>
+          <a class="btn btn-glass glass glass--liquid" href="/cita/">See the offer</a>
+        </p>
       </div>
-      <button class="ticker-pause" type="button" aria-pressed="false" aria-label="Pause the service list" data-label-pause="Pause the service list" data-label-play="Play the service list"></button>
-    </div>
-
-    <section class="reel wrap" id="reel" aria-labelledby="reel-title">
-      <h2 class="sr-only" id="reel-title">Reel</h2>
-      <div class="reel-frame" data-placeholder="P19">
-        <p><span class="mark">[PLACEHOLDER: real reel]</span><strong>Showreel</strong></p>
-        <button class="btn btn-outline" type="button">Play with sound</button>
-      </div>
-      <p class="reel-cap" data-placeholder="P19">The reel · brands, food, retail, web and real estate [PLACEHOLDER: real reel]</p>
+      <div class="scroll-hint" aria-hidden="true"><i></i><span>Scroll</span></div>
     </section>
-
-    <section class="band wrap" id="work" aria-labelledby="work-title">
-      <div class="work-head">
-        <h2 id="work-title">Selected work</h2>
-        <p class="work-count" aria-live="polite">1 / 6</p>
-        <p class="lede" data-placeholder="P19">Real projects, real businesses. Pick one and press play. [PLACEHOLDER: hide sub until P19 has 4+ pieces]</p>
-      </div>
-      <div class="work-track" tabindex="0" aria-label="Selected work">
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">[PLACEHOLDER: café brand film]</span></div>
-          <figcaption>[PLACEHOLDER: client] · [PLACEHOLDER: industry] · [PLACEHOLDER: deliverable]</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">[PLACEHOLDER: boutique landing page]</span></div>
-          <figcaption>[PLACEHOLDER: client] · [PLACEHOLDER: industry] · [PLACEHOLDER: deliverable]</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">[PLACEHOLDER: clinic booking automation]</span></div>
-          <figcaption>[PLACEHOLDER: client] · [PLACEHOLDER: industry] · [PLACEHOLDER: deliverable]</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">[PLACEHOLDER: listing film]</span></div>
-          <figcaption>[PLACEHOLDER: client] · [PLACEHOLDER: industry] · [PLACEHOLDER: deliverable]</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">[PLACEHOLDER: food reel]</span></div>
-          <figcaption>[PLACEHOLDER: client] · [PLACEHOLDER: industry] · [PLACEHOLDER: deliverable]</figcaption>
-        </figure>
-        <figure class="card" data-placeholder="P19">
-          <div class="card-media"><span class="mark">[PLACEHOLDER: retail website]</span></div>
-          <figcaption>[PLACEHOLDER: client] · [PLACEHOLDER: industry] · [PLACEHOLDER: deliverable]</figcaption>
-        </figure>
-      </div>
-      <p class="section-cta"><a class="btn btn-outline" href="#work">See the full project</a></p>
-    </section>
-
-    <section class="band" id="services" aria-labelledby="services-title">
-      <div class="wrap offers-intro">
-        <h2 id="services-title">Two ways we work.</h2>
-        <p class="lede">Creative gets you seen. Development makes it pay off.</p>
-      </div>
-      <div class="split-stage">
-        <article class="half half-creative">
-          <div class="half-inner">
-            <h3>Creative for your business</h3>
-            <p class="offer-name">The Seen Stack</p>
-            <p class="offer-dream">Look like the obvious choice before anyone calls.</p>
-            <p class="half-note">One 15-minute call. We plan the shots, film or generate them, and hand you posts ready to go up in both languages.</p>
-            <ul class="offer-rows">
-              <li><span class="row-n">01</span><span><strong>Brand identity</strong><em class="offer-desc">Logo, colors, type and a voice people remember.</em></span></li>
-              <li><span class="row-n">02</span><span><strong>Brand film</strong><em class="offer-desc">One video that explains what you do in under a minute.</em></span></li>
-              <li><span class="row-n">03</span><span><strong>Social cuts</strong><em class="offer-desc">Reels, ads and UGC-style clips from the same shoot. <span data-placeholder="P09">[PLACEHOLDER: number of cuts]</span></em></span></li>
-              <li><span class="row-n">04</span><span><strong>Both languages</strong><em class="offer-desc">English and Spanish captions or voice-over on every piece.</em></span></li>
-              <li><span class="row-n">05</span><span><strong>Motion graphics</strong><em class="offer-desc">Logo animation and on-screen text that match your brand.</em></span></li>
-            </ul>
-            <p>You give us 15 minutes. We handle the rest. First cut in <span data-placeholder="P07">[PLACEHOLDER: turnaround days]</span> days.</p>
-            <p data-placeholder="P13">[PLACEHOLDER: real client logo/quote/result, hide if none]</p>
-            <p class="guarantee">If the first cut isn't right, we re-edit it. If it still isn't right after your two rounds of changes, you don't pay.</p>
-            <div class="free-offer">
-              <h4>Free Spec Ad</h4>
-              <p>See it before you pay for it. Send us your business and we'll make you a short vertical ad, free.</p>
-              <ul class="bullets">
-                <li>A <span data-placeholder="P09">[PLACEHOLDER: 15–30]</span>s vertical ad made for your business</li>
-                <li>In English, Spanish or both</li>
-                <li>Ready for Instagram, TikTok or Reels</li>
-                <li>Yours to keep, with no contract</li>
-                <li>Delivered in 5 days</li>
-              </ul>
-              <form class="form" data-form="spec" data-offer="free-spec-ad" data-config="formEndpoint" data-placeholder="P06" novalidate data-msg-required="Fill in this field." data-msg-email="Enter a valid email.">
-                <div class="hp" aria-hidden="true">
-                  <label>Company website<input name="company_website" tabindex="-1" autocomplete="off" /></label>
-                </div>
-                <label>Business name<input name="business" autocomplete="organization" required /></label>
-                <label>Instagram or website<input name="handle" required /></label>
-                <label>Email<span class="field-help">We'll send your ad here. Nothing else.</span><input type="email" name="email" autocomplete="email" required /></label>
-                <p class="form-error" role="alert" hidden></p>
-                <p class="form-send-error" role="alert" hidden>We couldn't send that. <span class="form-fallback"><a data-config="whatsapp" data-placeholder="P03" href="">Message us on WhatsApp</a><a data-config="email" data-placeholder="P04" href=""></a></span></p>
-                <button class="btn btn-primary btn-wide" type="submit">Get my free spec ad</button>
-                <p class="form-ok" role="status" hidden>Got it. We'll email you within 24 hours to start your ad.</p>
-              </form>
-            </div>
-            <p class="scarcity" data-preview-only hidden>We take on <span data-placeholder="P17">[PLACEHOLDER: number]</span> new creative clients a month.</p>
+    <section class="ad-tabs-section" id="samples" aria-labelledby="samples-title">
+      <div class="wrap">
+        <div class="ad-tabs-head ad-tabs-head--center">
+          <h2 id="samples-title">Pick your business.</h2>
+          <p class="lede">A sample ad for each kind of business we work with. Press play.</p>
+        </div>
+        <div data-ad-tabs data-ad-tabs-layout="center"></div>
+        <p class="ad-tabs-more"><a href="/cita/">See the full offer</a></p>
+        <noscript>
+          <div class="ad-tabs-noscript">
+          <figure class="ad-card">
+            <div class="ad-media"><img src="/assets/ads/beauty-poster.webp" alt="Sample spec ad for a beauty salon. Not client work." width="720" height="1280" /></div>
+            <figcaption>Sample spec ad for a beauty salon. Not client work.</figcaption>
+          </figure>
+          <figure class="ad-card">
+            <div class="ad-media"><img src="/assets/ads/lashes-poster.webp" alt="Sample spec ad for a lash studio. Not client work." width="720" height="1280" /></div>
+            <figcaption>Sample spec ad for a lash studio. Not client work.</figcaption>
+          </figure>
+          <figure class="ad-card">
+            <div class="ad-media"><img src="/assets/ads/medspa-poster.webp" alt="Sample spec ad for a med spa. Not client work." width="720" height="1280" /></div>
+            <figcaption>Sample spec ad for a med spa. Not client work.</figcaption>
+          </figure>
           </div>
-        </article>
-        <article class="half half-dev">
-          <svg class="wire" viewBox="0 0 200 140" aria-hidden="true" fill="none" stroke="#B8BEC6" stroke-width="1">
-            <path d="M20 110 L70 80 L150 80 L180 50 M70 80 L70 30 L150 30 L180 50 L180 100 L150 80 M70 30 L20 60 L20 110" />
-          </svg>
-          <div class="half-inner">
-            <h3>Development for your needs</h3>
-            <p class="offer-name">The Done-For-You Build</p>
-            <p class="offer-dream">A website that books customers while you work.</p>
-            <p class="half-note">Audit, build, automate. We find where leads slip away, build the fix and connect it so it keeps running without you.</p>
-            <ul class="offer-rows">
-              <li><span class="row-n">01</span><span><strong>Website or landing page</strong><em class="offer-desc">Fast, mobile-first and built so visitors call, book or message.</em></span></li>
-              <li><span class="row-n">02</span><span><strong>Booking + lead capture</strong><em class="offer-desc">Forms, calendar and WhatsApp connected, so every inquiry lands somewhere.</em></span></li>
-              <li><span class="row-n">03</span><span><strong>App or dashboard</strong><em class="offer-desc">Internal tools, client portals and live numbers, if you need them.</em></span></li>
-              <li><span class="row-n">04</span><span><strong>AI assistant + follow-up</strong><em class="offer-desc">Answers the common questions and follows up with leads in English and Spanish.</em></span></li>
-              <li><span class="row-n">05</span><span><strong>Launch + handover</strong><em class="offer-desc">Hosting set up, a short how-to video and <span data-placeholder="P14">[PLACEHOLDER: support period]</span> of fixes.</em></span></li>
-            </ul>
-            <p>You don't need to know tech. You approve, we build. Working demo in <span data-placeholder="P07">[PLACEHOLDER: turnaround days]</span> days.</p>
-            <p data-placeholder="P13">[PLACEHOLDER: real site/screenshot/result, hide if none]</p>
-            <p class="guarantee">If the working demo isn't what you asked for, you walk away and owe nothing.</p>
-            <div class="free-offer">
-              <h4>Free 15-Minute AI Audit</h4>
-              <p>Fifteen minutes on a call. We look at how you get and handle customers today and tell you what to fix first.</p>
-              <ul class="bullets">
-                <li>Where you're losing time or leads</li>
-                <li>One or two AI fixes you can put to work this month</li>
-                <li>A ballpark for a site, app or assistant</li>
-                <li>A short written summary after the call <span data-placeholder="P15">[PLACEHOLDER: confirm]</span></li>
-              </ul>
-              <p class="field-help">No pitch, and you're under no obligation.</p>
-              <a class="btn btn-outline btn-wide" data-config="calAudit" data-placeholder="P02" href="">Pick a time for my free audit</a>
-            </div>
-            <p class="scarcity" data-preview-only hidden>We run <span data-placeholder="P17">[PLACEHOLDER: number]</span> builds at a time.</p>
-          </div>
-        </article>
-        <div class="seam-wrap" aria-hidden="true">
-          <div class="seam-line"></div>
-          <div class="drip"><img src="/assets/logo/veloxlab-icon.svg" alt="" width="28" height="28" /></div>
-        </div>
+        </noscript>
       </div>
     </section>
-
-    <section class="band wrap" id="real-estate" aria-labelledby="spot-title">
-      <div class="spot">
-        <div>
-          <h2 id="spot-title">Real estate, for example.</h2>
-          <p class="lede">Miami buyers scroll in two languages. We make listing films and reels that speak to both, so your listing gets seen by more of the people who can buy it.</p>
-          <ul class="outcomes">
-            <li data-placeholder="P12">[PLACEHOLDER: outcome 1]</li>
-            <li data-placeholder="P12">[PLACEHOLDER: outcome 2]</li>
-            <li data-placeholder="P12">[PLACEHOLDER: outcome 3]</li>
+    <section class="home-split" id="offer" aria-labelledby="teaser-title">
+      <div class="wrap home-split-grid">
+        <article class="offer-teaser">
+          <h2 id="teaser-title" lang="es">De Reel a Cita</h2>
+          <p>For Hialeah and Doral beauty salons and med spas: bilingual ads every month and an Instagram agent that answers DMs and sends your booking link.</p>
+          <p><a class="btn btn-gold" href="/cita/">See the offer</a></p>
+        </article>
+        <article class="custom-card" id="custom">
+          <h3>Custom builds.</h3>
+          <p>AI agents, internal dashboards and automations built secure from day one.</p>
+          <p><a href="https://sadielalmanza.dev" target="_blank" rel="noopener noreferrer">See my work<span class="sr-only"> (opens in a new tab)</span></a></p>
+        </article>
+      </div>
+    </section>
+    <section class="spec-band" id="spec" aria-labelledby="spec-title">
+      <div class="wrap spec-grid">
+        <div class="spec-copy">
+          <h2 id="spec-title">Free spec ad</h2>
+          <p class="lede">See it before you pay for it. Send us your business and we'll make you a short vertical ad, free.</p>
+          <ul class="bullets">
+            <li>A short vertical ad made for your business</li>
+            <li>In English, Spanish or both</li>
+            <li>Ready for Instagram, TikTok or Reels</li>
+            <li>Yours to keep, with no contract</li>
+            <li>Delivered in 5 days</li>
           </ul>
         </div>
-        <div>
-          <div class="reel-frame" data-placeholder="P12" role="img" aria-label="[PLACEHOLDER: listing · neighborhood]"></div>
-          <p data-placeholder="P12">[PLACEHOLDER: listing · neighborhood] · film + [PLACEHOLDER: number] reels</p>
-          <p><a class="btn btn-outline" href="/?topic=real-estate#contact">Get a free spec ad for your listing</a></p>
-          <p class="field-help">Send us one listing link. We'll show you how it could look.</p>
-        </div>
+        <form class="form" data-form="spec" data-offer="free-spec-ad" data-config="formEndpoint" data-placeholder="P06" novalidate data-msg-required="Fill in this field." data-msg-email="Enter a valid email.">
+          <div class="hp" aria-hidden="true">
+            <label>Company website<input name="company_website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <label>Business name<input name="business" autocomplete="organization" required /></label>
+          <label>Instagram or website<input name="handle" required /></label>
+          <label>Email<span class="field-help">We'll send your ad here. Nothing else.</span><input type="email" name="email" autocomplete="email" required /></label>
+          <p class="form-error" role="alert" hidden></p>
+          <p class="form-send-error" role="alert" hidden>We couldn't send that. <span class="form-fallback"><a data-config="email" data-placeholder="P04" href=""></a></span></p>
+          <button class="btn btn-gold btn-wide" type="submit">Get my free spec ad</button>
+          <p class="form-ok" role="status" hidden>Got it. We'll email you within 24 hours to start your ad.</p>
+        </form>
       </div>
     </section>
-
-    <section class="band wrap" id="process" aria-labelledby="process-title">
-      <h2 id="process-title">How it works</h2>
-      <ol class="steps">
-        <li><span class="step-n">01</span><h3>Brief</h3><p>A 15-minute call about your goals, your customers and the look you want.</p></li>
-        <li><span class="step-n">02</span><h3>Create or build</h3><p>We make the first cut or a working demo in <span data-placeholder="P07">[PLACEHOLDER: turnaround days]</span> days.</p></li>
-        <li><span class="step-n">03</span><h3>Revise</h3><p>Two rounds of changes are included.</p></li>
-        <li><span class="step-n">04</span><h3>Launch</h3><p>Your content is ready to post, or your site, app or assistant is live.</p></li>
-      </ol>
-      <p class="section-cta"><a class="btn btn-primary" data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call</a></p>
-    </section>
-
-    <section class="band wrap" id="about" aria-labelledby="why-title">
-      <h2 id="why-title">Miami speaks two languages. Your business should too.</h2>
-      <p class="why-lead">We write in English and Spanish from the start. Your Spanish customers get copy written for them, not run through a translator, and your English customers get the same care.</p>
-      <ul class="pillars">
-        <li><strong>Native in both</strong> Every caption, script and page written fresh in each language.</li>
-        <li><strong>Made to look premium</strong> Cinematic video and design that put you next to the biggest names in your market.</li>
-        <li><strong>One studio</strong> Content, website and automations from the same team, so nothing gets lost between vendors.</li>
-      </ul>
-      <blockquote data-placeholder="P11">[PLACEHOLDER: real testimonial, name, business]</blockquote>
-      <p class="section-cta"><a class="btn btn-primary" data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call</a></p>
-    </section>
-
-    <section class="band" id="contact" aria-labelledby="contact-title">
-      <div class="wrap contact-grid">
-        <div>
-          <h2 id="contact-title">Tell us what you need. We'll reply with a plan.</h2>
-          <p class="lede">Book a 15-minute call, or send a message and we'll get back to you within 24 hours.</p>
-          <p><a class="btn btn-primary" data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call</a></p>
-          <div class="contact-meta">
-            <a data-config="whatsapp" data-placeholder="P03" href="">Message us on WhatsApp</a>
-            <a data-config="email" data-placeholder="P04" href=""></a>
-            <p>Miami, FL</p>
+    <section class="band" id="contact" data-scene="spade" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="contact-panel glass">
+          <div class="contact-copy">
+            <h2 id="contact-title">Tell us what you need. <em>We'll reply with a plan.</em></h2>
+            <p class="lede">Book a 15-minute call, or send a message and we'll get back to you within 24 hours.</p>
+            <p><a class="btn btn-gold" data-config="calIntro" data-cta="primary" data-placeholder="P01" href="">Book a 15-min call</a></p>
+            <div class="contact-meta">
+              <a data-config="email" data-placeholder="P04" href=""></a>
+              <p>Miami, FL</p>
+            </div>
           </div>
-        </div>
-        <form class="form" id="booking" data-form="contact" data-offer="contact" data-config="formEndpoint" data-placeholder="P06" novalidate data-msg-required="Fill in this field." data-msg-email="Enter a valid email.">
+          <form class="form" id="booking" data-form="contact" data-offer="contact" data-config="formEndpoint" data-placeholder="P06" novalidate data-msg-required="Fill in this field." data-msg-email="Enter a valid email.">
           <div class="hp" aria-hidden="true">
             <label>Company website<input name="company_website" tabindex="-1" autocomplete="off" /></label>
           </div>
@@ -340,10 +215,10 @@
           <label>Topic
             <select name="topic" required>
               <option value="">Topic</option>
-              <option value="creative">Creative</option>
-              <option value="development">Development</option>
-              <option value="real-estate">Real estate</option>
-              <option value="not-sure">Not sure</option>
+              <option value="cita">De Reel a Cita (ads + booking agent)</option>
+              <option value="spec-ad">Free spec ad</option>
+              <option value="custom">Custom build</option>
+              <option value="not-sure">Not sure yet</option>
             </select>
           </label>
           <label>Language
@@ -352,30 +227,28 @@
               <option value="es">ES</option>
             </select>
           </label>
-          <label>Message<span class="field-help">What do you want your customers to do?</span><textarea name="message" required></textarea></label>
+          <label class="span-2">Message<span class="field-help">What do you want your customers to do?</span><textarea name="message" required></textarea></label>
           <p class="form-error" role="alert" hidden></p>
-          <p class="form-send-error" role="alert" hidden>We couldn't send that. <span class="form-fallback"><a data-config="whatsapp" data-placeholder="P03" href="">Message us on WhatsApp</a><a data-config="email" data-placeholder="P04" href=""></a></span></p>
-          <button class="btn btn-primary" type="submit">Send and get my plan</button>
+          <p class="form-send-error" role="alert" hidden>We couldn't send that. <span class="form-fallback"><a data-config="email" data-placeholder="P04" href=""></a></span></p>
+          <button class="btn btn-gold btn-wide" type="submit">Send and get my plan</button>
           <p class="form-ok" role="status" hidden>Thanks. We'll reply within 24 hours.</p>
         </form>
+        </div>
       </div>
     </section>
   </main>
-
-  <footer class="footer">
-    <img class="giant" src="/assets/logo/veloxlab-watermark.svg" alt="" width="1400" height="180" />
-    <div class="footer-grid">
+  <footer class="footer" data-scene="spade-end">
+    <div class="wrap footer-grid">
       <div>
         <img src="/assets/logo/veloxlab-primary.svg" alt="VeloxLab" width="158" height="22" />
-        <p class="lede">Creative and development studio · Miami · English &amp; Español</p>
-        <p>Have a project? <a data-config="calIntro" data-placeholder="P01" href="">Book a 15-min call</a></p>
+        <p class="lede">Ads, booking agents and custom builds · Miami · English &amp; Español</p>
+        <p>Have a project? <a data-config="calIntro" data-cta="primary" data-placeholder="P01" href="">Book a 15-min call</a></p>
       </div>
       <nav aria-label="Footer">
-        <a href="#work">Work</a>
-        <a href="#services">Services</a>
-        <a href="#real-estate">Real estate</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
+      <a href="#samples">Samples</a>
+      <a href="/cita/">De Reel a Cita</a>
+      <a href="#custom">Custom builds</a>
+      <a href="#contact">Contact</a>
       </nav>
       <div>
         <p class="socials">
@@ -387,13 +260,31 @@
         <p class="contact-meta"><a data-config="email" data-placeholder="P04" href=""></a></p>
       </div>
     </div>
-    <p class="legal">© 2026 VeloxLab Studio · <a href="/privacy.html">Privacy</a></p>
+    <p class="giant" aria-hidden="true">Velox<em>Lab</em></p>
+    <p class="wrap legal">© 2026 VeloxLab Studio · <a href="/privacy.html">Privacy</a></p>
   </footer>
+  <dialog class="viewer" aria-label="Project viewer">
+    <div class="viewer-inner glass">
+      <video class="viewer-video" playsinline controls loop></video>
+      <p class="viewer-cap"></p>
+      <button class="viewer-close glass glass--liquid" type="button" aria-label="Close"><span aria-hidden="true"></span></button>
+    </div>
+  </dialog>
 
+  <svg class="lg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="lg-refract" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feImage class="lg-map" preserveAspectRatio="none" result="map" />
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="38" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
   <script src="/js/vendor/lenis.min.js" defer></script>
   <script src="/js/config.js" defer></script>
   <script src="/js/commitments.js" defer></script>
   <script src="/js/form-submit.js" defer></script>
+  <script src="/js/site.js" defer></script>
+  <script src="/js/attribution.js" defer></script>
+  <script src="/js/niches.js" defer></script>
+  <script src="/js/ad-card.js" defer></script>
   <script src="/js/main.js" defer></script>
   <script type="module" src="/js/stage.js"></script>
 </body>
